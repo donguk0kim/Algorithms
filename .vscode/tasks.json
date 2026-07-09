@@ -1,0 +1,39 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "Run active C++ file (clang++)",
+            "command": "mkdir -p \"${workspaceFolder}/build\" && /usr/bin/clang++ -std=c++17 -g -fcolor-diagnostics -fansi-escape-codes \"${fileDirname}\"/*.cpp -o \"${workspaceFolder}/build/${fileBasenameNoExtension}\" && \"${workspaceFolder}/build/${fileBasenameNoExtension}\"",
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "clear": true,
+                "focus": true
+            },
+            "detail": "Compile every .cpp in the active file's folder with clang++ into /build, then run the binary"
+        },
+        {
+            "type": "shell",
+            "label": "C/C++: clang++ build active file",
+            "command": "mkdir -p \"${workspaceFolder}/build\" && /usr/bin/clang++ -std=c++17 -g -fcolor-diagnostics -fansi-escape-codes \"${fileDirname}\"/*.cpp -o \"${workspaceFolder}/build/${fileBasenameNoExtension}\"",
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Build only (used by launch.json for F5 debugging) into /build"
+        }
+    ]
+}

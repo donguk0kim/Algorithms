@@ -1,7 +1,7 @@
-#include "MergeSort.hpp"
+#include "merge_sort.hpp"
 
-// merge sort O(nlog(n))
-std::vector<int> mergeSort(std::vector<int> array) {
+// nlog(n)
+std::vector<int> merge_sort(std::vector<int> array) {
   if (array.size() <= 1) return array;
   
   int midIndex = (int) array.size() / 2;
@@ -16,12 +16,12 @@ std::vector<int> mergeSort(std::vector<int> array) {
     rite = std::vector<int>(array.begin() + midIndex, array.end());
   }
   
-  left = mergeSort(left);
-  rite = mergeSort(rite);
+  left = merge_sort(left);
+  rite = merge_sort(rite);
   return merge(left, rite);
 }
 
-// merge helper function
+// helper function
 std::vector<int> merge(std::vector<int> left, std::vector<int> rite) {
   std::vector<int> result;
   
