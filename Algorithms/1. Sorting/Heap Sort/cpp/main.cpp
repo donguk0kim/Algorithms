@@ -1,14 +1,14 @@
-#include "Heapsort.hpp"
-#include "BinaryMaxHeap.hpp"
+#include "heapsort.hpp"
+#include "binary_max_heap.hpp"
 
 int main() {
   
-  // test case BMH::insert
+  // test case BinaryMaxHeap::insert
   BinaryMaxHeap bmh;
   std::vector<int> array { 0, 1, 2, 3, 4, 5 };
   for (int k = 0; k < array.size(); k++) bmh.insert(array[k]);
 
-  // test case BMH::extract
+  // test case BinaryMaxHeap::extract
   BinaryMaxHeap::print(bmh.store);
   bmh.extract();
   BinaryMaxHeap::print(bmh.store);
@@ -20,7 +20,7 @@ int main() {
   BinaryMaxHeap::print(result);
   
   // test case heapsort inplace
-  heapsortInplace(array);
+  heapsort_inplace(array);
   BinaryMaxHeap::print(array);
   
   return 0;

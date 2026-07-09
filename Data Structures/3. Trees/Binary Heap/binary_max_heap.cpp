@@ -1,5 +1,5 @@
 #include <algorithm>
-#include "BinaryMaxHeap.hpp"
+#include "binary_max_heap.hpp"
 
 // constructor
 BinaryMaxHeap::BinaryMaxHeap() {

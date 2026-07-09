@@ -1,7 +1,7 @@
-#include "BinarySearch.hpp"
+#include "binary_search.hpp"
 
 // binary search
-int binarySearch(std::vector<int> array, int target) {
+int binary_search(std::vector<int> array, int target) {
   
   int midIndex = (int) array.size() / 2;
   int mid = array[midIndex];
@@ -12,9 +12,9 @@ int binarySearch(std::vector<int> array, int target) {
   std::vector<int> rite (array.begin() + midIndex + 1, array.end());
   
   if (mid > target) {
-    return binarySearch(left, target);
+    return binary_search(left, target);
   } else {
-    int index = binarySearch(rite, target);
+    int index = binary_search(rite, target);
     return index < 0 ? index : midIndex + index + 1;
   }
 }

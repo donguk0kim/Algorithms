@@ -4,7 +4,7 @@
         {
             "type": "shell",
             "label": "Run active C++ file (clang++)",
-            "command": "mkdir -p \"${workspaceFolder}/build\" && /usr/bin/clang++ -std=c++17 -g -fcolor-diagnostics -fansi-escape-codes \"${fileDirname}\"/*.cpp -o \"${workspaceFolder}/build/${fileBasenameNoExtension}\" && \"${workspaceFolder}/build/${fileBasenameNoExtension}\"",
+            "command": "sh \"${workspaceFolder}/.vscode/build.sh\" \"${fileDirname}\" \"${workspaceFolder}\" \"${workspaceFolder}/build/${fileBasenameNoExtension}\" && \"${workspaceFolder}/build/${fileBasenameNoExtension}\"",
             "options": {
                 "cwd": "${fileDirname}"
             },
@@ -26,7 +26,7 @@
         {
             "type": "shell",
             "label": "C/C++: clang++ build active file",
-            "command": "mkdir -p \"${workspaceFolder}/build\" && /usr/bin/clang++ -std=c++17 -g -fcolor-diagnostics -fansi-escape-codes \"${fileDirname}\"/*.cpp -o \"${workspaceFolder}/build/${fileBasenameNoExtension}\"",
+            "command": "sh \"${workspaceFolder}/.vscode/build.sh\" \"${fileDirname}\" \"${workspaceFolder}\" \"${workspaceFolder}/build/${fileBasenameNoExtension}\"",
             "options": {
                 "cwd": "${fileDirname}"
             },
