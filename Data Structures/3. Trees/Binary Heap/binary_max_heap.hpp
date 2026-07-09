@@ -19,13 +19,13 @@ public:
   void insert(int value);
   
   // helper methods
-  static int parentIndex(int childIndex);
-  static std::vector<int> childIndices(int parentIndex, int count);
-  static int indexOfMax(std::vector<int>& array, std::vector<int>& indices);
+  static int parent_index(int childIndex);
+  static std::vector<int> child_indices(int parent_index, int count);
+  static int index_of_max(std::vector<int>& array, std::vector<int>& indices);
   
   // advanced operations
-  static void heapifyUp(std::vector<int>& array, int childIndex);
-  static void heapifyDown(std::vector<int>& array, int parentIndex, int count);
+  static void heapify_up(std::vector<int>& array, int childIndex);
+  static void heapify_down(std::vector<int>& array, int parent_index, int count);
   
   // debugger
   static void print(std::vector<int>& array);

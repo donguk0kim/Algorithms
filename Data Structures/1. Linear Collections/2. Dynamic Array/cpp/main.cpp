@@ -1,4 +1,4 @@
-#include "DynamicArray.hpp"
+#include "dynamic_array.hpp"
 
 int main() {
   

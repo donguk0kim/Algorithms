@@ -25,33 +25,33 @@ int BinaryMaxHeap::extract() {
   int maximum = max();
   store[0] = store.back();
   store.pop_back();
-  heapifyDown(store, 0, count());
+  heapify_down(store, 0, count());
   return maximum;
 }
 
 // O(log(n))
 void BinaryMaxHeap::insert(int value) {
   store.push_back(value);
-  BinaryMaxHeap::heapifyUp(store, count() - 1);
+  BinaryMaxHeap::heapify_up(store, count() - 1);
 }
 
 // helper methods
-int BinaryMaxHeap::parentIndex(int childIndex) {
+int BinaryMaxHeap::parent_index(int childIndex) {
   int index = (childIndex - 1) / 2;
   if (childIndex < 0) throw std::out_of_range("Root has no parent");
   return index;
 }
 
-std::vector<int> BinaryMaxHeap::childIndices(int parentIndex, int count) {
+std::vector<int> BinaryMaxHeap::child_indices(int parent_index, int count) {
   std::vector<int> indices;
-  int left = (parentIndex * 2 + 1);
-  int rite = (parentIndex * 2 + 2);
+  int left = (parent_index * 2 + 1);
+  int rite = (parent_index * 2 + 2);
   if (left < count) indices.push_back(left);
   if (rite < count) indices.push_back(rite);
   return indices;
 }
 
-int BinaryMaxHeap::indexOfMax(std::vector<int>& array, std::vector<int>& indices) {
+int BinaryMaxHeap::index_of_max(std::vector<int>& array, std::vector<int>& indices) {
   if (indices.size() == 0) return -1;
   if (indices.size() == 1) return indices.front();
   
@@ -61,31 +61,31 @@ int BinaryMaxHeap::indexOfMax(std::vector<int>& array, std::vector<int>& indices
 }
 
 // advanced methods
-void BinaryMaxHeap::heapifyUp(std::vector<int>& array, int childIndex) {
+void BinaryMaxHeap::heapify_up(std::vector<int>& array, int childIndex) {
   if (childIndex == 0) return;
   
-  int parentIndex = BinaryMaxHeap::parentIndex(childIndex);
-  int parent = array[parentIndex];
+  int parent_index = BinaryMaxHeap::parent_index(childIndex);
+  int parent = array[parent_index];
   int child = array[childIndex];
   
   if (child > parent) {
     array[childIndex] = parent;
-    array[parentIndex] = child;
-    BinaryMaxHeap::heapifyUp(array, parentIndex);
+    array[parent_index] = child;
+    BinaryMaxHeap::heapify_up(array, parent_index);
   }
 }
 
-void BinaryMaxHeap::heapifyDown(std::vector<int>& array, int parentIndex, int count) {
-  std::vector<int> indices = BinaryMaxHeap::childIndices(parentIndex, (int) count);
-  int childIndex = BinaryMaxHeap::indexOfMax(array, indices);
+void BinaryMaxHeap::heapify_down(std::vector<int>& array, int parent_index, int count) {
+  std::vector<int> indices = BinaryMaxHeap::child_indices(parent_index, (int) count);
+  int childIndex = BinaryMaxHeap::index_of_max(array, indices);
   if (childIndex == -1) return;
-  int parent = array[parentIndex];
+  int parent = array[parent_index];
   int child = array[childIndex];
   
   if (parent < child) {
     array[childIndex] = parent;
-    array[parentIndex] = child;
-    BinaryMaxHeap::heapifyDown(array, childIndex, count);
+    array[parent_index] = child;
+    BinaryMaxHeap::heapify_down(array, childIndex, count);
   }
 }
 

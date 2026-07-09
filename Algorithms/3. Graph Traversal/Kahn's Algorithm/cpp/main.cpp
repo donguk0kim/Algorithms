@@ -1,4 +1,4 @@
-#include "KhansAlgorithm.hpp"
+#include "khans_algorithm.hpp"
 
 int main() {
   

@@ -1,5 +1,5 @@
 #include <iostream>
-#include "HashMap.hpp"
+#include "hash_map.hpp"
 
 void print(int value) {
   std::cout << value << std::endl;

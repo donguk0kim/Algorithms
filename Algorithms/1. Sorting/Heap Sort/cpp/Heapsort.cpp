@@ -22,7 +22,7 @@ void heapsort_inplace(std::vector<int>& array) {
   int count = (int) array.size();
 
   for (int k = 0; k < count; k++) {
-    BinaryMaxHeap::heapifyUp(array, k);
+    BinaryMaxHeap::heapify_up(array, k);
   }
   
   int temp;
@@ -32,6 +32,6 @@ void heapsort_inplace(std::vector<int>& array) {
     temp = array[0];
     array[0] = array[count];
     array[count] = temp;
-    BinaryMaxHeap::heapifyDown(array, 0, count);
+    BinaryMaxHeap::heapify_down(array, 0, count);
   }
 }

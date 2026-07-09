@@ -1,6 +1,6 @@
 #include <iostream>
-#include "Node.hpp"
-#include "Edge.hpp"
+#include "node.hpp"
+#include "edge.hpp"
 
 // debugger
 void print(int value) {

@@ -1,5 +1,5 @@
-#include "../Graphs/Edge.hpp"
-#include "TarjansAlgorithm.hpp"
+#include "../Graphs/edge.hpp"
+#include "tarjans_algorithm.hpp"
 
 int main() {
   

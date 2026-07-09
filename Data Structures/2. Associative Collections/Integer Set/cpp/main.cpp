@@ -1,6 +1,6 @@
 #include <iostream>
-#include "MaxIntSet.hpp"
-#include "IntegerSet.hpp"
+#include "max_int_set.hpp"
+#include "integer_set.hpp"
 
 void sprint(const char* string) {
   std::cout << string << std::endl;

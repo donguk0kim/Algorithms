@@ -1,5 +1,5 @@
 #include <iostream>
-#include "HashSet.hpp"
+#include "hash_set.hpp"
 
 void print(int number) {
   std::cout << number << std::endl;

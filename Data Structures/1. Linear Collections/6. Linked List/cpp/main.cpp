@@ -1,5 +1,5 @@
 #include <iostream>
-#include "LinkedList.hpp"
+#include "linked_list.hpp"
 
 void sprint(const char* string) {
   std::cout << string << std::endl;

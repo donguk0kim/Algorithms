@@ -1,4 +1,4 @@
-#include "BinarySearchTree.hpp"
+#include "binary_search_tree.hpp"
 
 // debugger
 void print(int value) {
@@ -39,25 +39,25 @@ int main() {
   print(bst.depth(bst.root->rite));
   sprint("");
   
-  // BST::isBalanced test case
-  sprint("BST::isBalanced test case");
-  print(bst.isBalanced(bst.root) == 0);
-  print(bst.isBalanced(bst.root->left) == 1);
-  print(bst.isBalanced(bst.root->rite) == 0);
-  print(bst.isBalanced(bst.root->rite->rite) == 1);
-  print(bst.isBalanced(bst.root->left->left) == 1);
+  // BST::is_balanced test case
+  sprint("BST::is_balanced test case");
+  print(bst.is_balanced(bst.root) == 0);
+  print(bst.is_balanced(bst.root->left) == 1);
+  print(bst.is_balanced(bst.root->rite) == 0);
+  print(bst.is_balanced(bst.root->rite->rite) == 1);
+  print(bst.is_balanced(bst.root->left->left) == 1);
   sprint("");
   
   // BST::remove test case
   sprint("BST::remove test case");
   bst.remove(2);
-  bst.root->printBFS();
+  bst.root->print_bfs();
   bst.remove(3);
-  bst.root->printBFS();
+  bst.root->print_bfs();
   bst.remove(5);
-  bst.root->printBFS();
+  bst.root->print_bfs();
   bst.remove(7);
-  bst.root->printBFS();
+  bst.root->print_bfs();
   sprint("");
 
   return 0;
