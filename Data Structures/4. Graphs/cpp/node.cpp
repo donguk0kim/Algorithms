@@ -9,5 +9,5 @@ Node::Node(int value) :
 Node::~Node() {
   prevEdges.clear();
   nextEdges.clear();
-  value = NULL;
+  value = 0;
 }

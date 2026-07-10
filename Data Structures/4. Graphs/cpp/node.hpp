@@ -14,6 +14,6 @@ public:
   
 public:
   // constructor
-  Node(int value = NULL);
+  Node(int value = 0);
   ~Node();
 };
