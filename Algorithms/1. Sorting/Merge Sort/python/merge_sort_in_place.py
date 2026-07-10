@@ -3,7 +3,7 @@ def merge_sort(nums: list[int], start: int, end: int) -> list[int]:
     length = end - start + 1
     if length <= 1: return nums
 
-    mid = length // 2
+    mid = start + (length - 1) // 2
 
     merge_sort(nums, start, mid)
     merge_sort(nums, mid + 1, end)
@@ -12,33 +12,24 @@ def merge_sort(nums: list[int], start: int, end: int) -> list[int]:
 
     return nums
 
+
 # helper function
-def merge(nums: list[int], start: int, mid: int, end: int):
+def merge(nums: list[int], leftStart: int, leftEnd: int, riteEnd: int):
 
-    start2 = mid + 1
+    riteStart = leftEnd + 1
+    index = riteStart
 
-    if nums[mid] <= nums[start2]: return
+    while riteStart <= riteEnd:
 
-    while start <= mid and start2 <= end:
-        
-        if nums[start] > nums[start2]:
-            temp = nums[start2]
-            index = start2
+        while index > leftStart and nums[index] < nums[index - 1]:
+            nums[index], nums[index - 1] = nums[index - 1], nums[index]
+            index -= 1
 
-            while index != start:
-                nums[index] = nums[index - 1]
-                index -= 1
-
-            nums[start] = temp
-
-            start += 1
-            mid += 1
-            start2 += 1
-        else:
-            start += 1
+        riteStart += 1
+        index = riteStart
 
 
-
+# test cases
 print(merge_sort([], 0 , 0))
 print(merge_sort([1], 0, 0))
 print(merge_sort([1, 2, 3, 4], 0, 3))

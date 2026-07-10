@@ -8,6 +8,7 @@ def merge_sort(nums: list[int]) -> list[int]:
 
     return merge(left, rite)
 
+
 # helper function
 def merge(left: list[int], rite: list[int]) -> list[int]:
     result = []
@@ -31,6 +32,7 @@ def merge(left: list[int], rite: list[int]) -> list[int]:
     return result
 
 
+# test cases
 print(merge_sort([]))
 print(merge_sort([1]))
 print(merge_sort([1, 2, 3, 4]))
