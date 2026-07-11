@@ -1,6 +1,6 @@
 #include "binary_search.hpp"
 
-// binary search
+// log(n)
 int binary_search(std::vector<int> array, int target) {
   
   int midIndex = (int) array.size() / 2;
