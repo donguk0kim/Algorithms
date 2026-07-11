@@ -4,25 +4,25 @@
 
 - [ ] Linear Collections
     - [ ] Static Array
-    - [x] Dynamic Array
+    - [ ] Dynamic Array
     - [ ] Stack
     - [ ] Queue
     - [ ] Deque
-    - [x] Linked List
-    - [x] Ring Buffer
+    - [ ] Linked List
+    - [ ] Ring Buffer
 
 - [ ] Associative Collections
     - [ ] Hash Map
-    - [x] Hash Set
+    - [ ] Hash Set
     - [ ] LRU Cache
 
 - [ ] Trees
-    - [x] Binary Search Tree
+    - [ ] Binary Search Tree
     - [ ] AVL Tree
     - [ ] Prefix Tree
-    - [x] Binary Heap
+    - [ ] Binary Heap
 
-- [x] Graphs
+- [ ] Graphs
     - [ ] Adjacency Matrix
     - [ ] Adjacency List
 
@@ -33,22 +33,23 @@
 ### Algorithms
 
 - [ ] Sorting
-    - [x] Heapsort
+    - [ ] Heapsort
     - [x] Merge Sort
     - [x] Quick Sort
-    - [ ] Insertion Sort
+    - [ ] Bubble Sort
     - [ ] Bucket Sort
+    - [x] Insertion Sort
 
 - [ ] Linear Traversal
     - [x] Binary Search
+    - [ ] Prefix Sum
     - [ ] Two-Pointer
     - [ ] Sliding Window
-    - [ ] Prefix Sum
 
 - [ ] Graph Traversal
-    - [x] Depth First Search
-    - [x] Breadth First Search
-    - [x] Kahn
+    - [ ] Depth First Search
+    - [ ] Breadth First Search
+    - [ ] Kahn
     - [ ] Tarjan
     - [ ] Dijkstra
 
