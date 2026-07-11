@@ -7,6 +7,8 @@ int main() {
   
   std::cout << binary_search(array, 5) << std::endl;
   std::cout << binary_search(array, 9) << std::endl;
+  std::cout << binary_search(array, 1) << std::endl;
+  std::cout << binary_search(array, 15) << std::endl;
   std::cout << binary_search(array, 10) << std::endl;
   std::cout << binary_search(array, -10) << std::endl;
   
