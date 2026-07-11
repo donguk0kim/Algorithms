@@ -1,4 +1,4 @@
-  def bsearch (target_value, &prc)
+  def binary_search (target_value, &prc)
       prc ||= Proc.new { |a, b| a <=> b }
 
       mid_index = self.length / 2
@@ -11,9 +11,9 @@
 
       case prc.call(target_value, mid_value)
       when  1
-        index = rite.bsearch(target_value, &prc)
+        index = rite.binary_search(target_value, &prc)
         return mid_index + index if index
       when -1
-        return left.bsearch(target_value, &prc)
+        return left.binary_search(target_value, &prc)
       end
   end
