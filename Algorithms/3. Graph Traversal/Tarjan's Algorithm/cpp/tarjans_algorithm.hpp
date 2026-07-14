@@ -5,7 +5,7 @@
 #include <unordered_set>
 #include <vector>
 
-#include "../Graphs/node.hpp"
+#include "node.hpp"
 
 std::list<Node*> Tarjan(std::vector<Node*>& nodes);
 

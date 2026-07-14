@@ -2,7 +2,7 @@
 
 #include <vector>
 
-#include "../Graphs/node.hpp"
+#include "node.hpp"
 
 std::vector<Node*> Kahn(std::vector<Node*>& nodes);
 

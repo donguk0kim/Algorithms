@@ -1,6 +1,6 @@
 #include "tarjans_algorithm.hpp"
 
-#include "../Graphs/edge.hpp"
+#include "edge.hpp"
 
 int main() {
 

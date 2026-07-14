@@ -1,6 +1,6 @@
 #include "tarjans_algorithm.hpp"
 
-#include "../Graphs/edge.hpp"
+#include "edge.hpp"
 
 // Tarjan's Algorithm - Topological Sorting
 std::list<Node*> Tarjan(std::vector<Node*>& nodes) {

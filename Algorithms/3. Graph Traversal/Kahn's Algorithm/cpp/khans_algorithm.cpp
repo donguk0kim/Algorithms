@@ -4,8 +4,8 @@
 #include <map>
 #include <queue>
 
-#include "../Graphs/edge.hpp"
-#include "../Graphs/node.hpp"
+#include "edge.hpp"
+#include "node.hpp"
 
 
 // Kahn's Algorithm - Topological Sorting

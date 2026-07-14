@@ -23,7 +23,10 @@ if [ -f "$DEPS" ]; then
       ''|\#*) continue ;;
     esac
     INCLUDES="$INCLUDES -I\"$WS/$line\""
-    EXTRA="$EXTRA \"$WS/$line\"/*.cpp"
+    for depfile in "$WS/$line"/*.cpp; do
+      case "$(basename "$depfile")" in main.cpp) continue ;; esac
+      EXTRA="$EXTRA '$depfile'"
+    done
   done < "$DEPS"
 fi
 
