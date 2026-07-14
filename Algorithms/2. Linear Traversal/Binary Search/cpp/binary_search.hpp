@@ -1,6 +1,8 @@
-#include <vector>
+#pragma once
+
 #include <iostream>
+#include <vector>
 
-int binary_search(std::vector<int> array, int target);
+int BinarySearch(std::vector<int> array, int target);
 
-void print(std::vector<int> array);
+void Print(std::vector<int> array);

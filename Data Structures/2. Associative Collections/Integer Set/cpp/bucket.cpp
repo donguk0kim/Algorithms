@@ -1,7 +1,8 @@
-#include <string>
-#include <sstream>
-#include <iostream>
 #include "bucket.hpp"
+
+#include <iostream>
+#include <sstream>
+#include <string>
 
 /* constructor */
 Bucket::Bucket() {
@@ -9,36 +10,36 @@ Bucket::Bucket() {
 
 /* Accessors */
 int& Bucket::operator[](int index) {
-  return store[index];
+  return store_[index];
 }
 
 /* Basic Operations */
-int Bucket::length() const {
-  return (int) store.size();
+int Bucket::Length() const {
+  return (int) store_.size();
 }
 
 // O(1)
-void Bucket::push(int value) {
-  store.push_back(value);
+void Bucket::Push(int value) {
+  store_.push_back(value);
 }
 
 // O(1) but worst case O(n)
-void Bucket::remove(int value) {
+void Bucket::Remove(int value) {
   int index = -1;
-  for (int k = 0; k < store.size(); k++) {
-    if (store[k] == value) {
+  for (int k = 0; k < store_.size(); k++) {
+    if (store_[k] == value) {
       index = k;
       break;
     }
   }
   if (index == -1) return;
-  store.erase(store.begin() + index);
+  store_.erase(store_.begin() + index);
 }
 
 // O(1) but worst case O(n)
-bool Bucket::includes(int value) const {
-  for (int index = 0; index < store.size(); index++) {
-    if (store[index] == value) return true;
+bool Bucket::Includes(int value) const {
+  for (int index = 0; index < store_.size(); index++) {
+    if (store_[index] == value) return true;
   }
   return false;
 }

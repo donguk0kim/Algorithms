@@ -1,34 +1,34 @@
 #include "dynamic_array.hpp"
 
 int main() {
-  
+
   // test cases
   DynamicArray array;
-  array.push(1);
-  array.push(2);
-  array.push(3);
-  array.push(4);
-  array.push(5);
-  array.print();
+  array.Push(1);
+  array.Push(2);
+  array.Push(3);
+  array.Push(4);
+  array.Push(5);
+  array.Print();
 
-  array.pop();
-  array.shift();
-  array.pop();
-  array.shift();
-  array.print();
+  array.Pop();
+  array.Shift();
+  array.Pop();
+  array.Shift();
+  array.Print();
 
-  array.unshift(2);
-  array.unshift(1);
-  array.push(4);
-  array.push(5);
-  array.print();
+  array.Unshift(2);
+  array.Unshift(1);
+  array.Push(4);
+  array.Push(5);
+  array.Print();
 
-  array.push(6);
-  array.push(7);
-  array.push(8);
-  array.push(9);
-  array.push(10);
-  array.print();
-  
+  array.Push(6);
+  array.Push(7);
+  array.Push(8);
+  array.Push(9);
+  array.Push(10);
+  array.Print();
+
   return 0;
 }

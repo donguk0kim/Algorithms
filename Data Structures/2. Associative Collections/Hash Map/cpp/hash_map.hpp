@@ -1,30 +1,32 @@
+#pragma once
+
 #include <list>
 
 class HashMap {
   // member variables
-  int count;
-  int numBuckets;
-  std::list<int>* store;
-  
+  int count_;
+  int num_buckets_;
+  std::list<int>* store_;
+
 public:
   // constructor
   HashMap();
-  
+
   // accessors
-  int get(int key) const;
-  void set(int key, int val);
-  
+  int Get(int key) const;
+  void Set(int key, int val);
+
   // basic operations
-  void remove(int key);
-  bool includes(int key) const;
-  
+  void Remove(int key);
+  bool Includes(int key) const;
+
   // debugger
-  void print() const;
-  
+  void Print() const;
+
 private:
   // private members
-  void resize();
-  void insert(int value);
-  int hash(int value) const;
-  int bucket_index(int key, int nBuckets) const;
+  void Resize();
+  void Insert(int value);
+  int Hash(int value) const;
+  int BucketIndex(int key, int n_buckets) const;
 };

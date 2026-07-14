@@ -1,85 +1,86 @@
-#include <iostream>
 #include "linked_list.hpp"
 
+#include <iostream>
+
 /* constructor */
-LinkedList::LinkedList() : count{0} {
-  this->head = new Node;
-  this->tail = new Node;
-  this->head->next = tail;
-  this->tail->prev = head;
+LinkedList::LinkedList() : count_{0} {
+  head_ = new Node;
+  tail_ = new Node;
+  head_->next_ = tail_;
+  tail_->prev_ = head_;
 }
 
 LinkedList::~LinkedList() {
-  while (!is_empty()) {
-    last()->destroy();
+  while (!IsEmpty()) {
+    Last()->Destroy();
   }
 }
 
 /* public */
 
 // O(1)
-Node* LinkedList::first() const {
-  return head->next;
+Node* LinkedList::First() const {
+  return head_->next_;
 }
 
 // O(1)
-Node* LinkedList::last() const {
-  return tail->prev;
+Node* LinkedList::Last() const {
+  return tail_->prev_;
 }
 
 // O(1)
-void LinkedList::push(int key, int val) {
+void LinkedList::Push(int key, int val) {
   Node* node = new Node(key, val);
-  node->next = tail;
-  node->prev = last();
-  last()->next = node;
-  tail->prev = node;
-  count++;
+  node->next_ = tail_;
+  node->prev_ = Last();
+  Last()->next_ = node;
+  tail_->prev_ = node;
+  count_++;
 }
 
 // O(n)
-void LinkedList::remove(int key) {
-  Node* node = find(key);
-  node->destroy();
-  count--;
+void LinkedList::Remove(int key) {
+  Node* node = Find(key);
+  node->Destroy();
+  count_--;
 }
 
 // O(n)
-Node* LinkedList::find(int key) const {
-  Node* node = first();
-  while (node != tail) {
-    if (node->key == key) return node;
-    node = node->next;
+Node* LinkedList::Find(int key) const {
+  Node* node = First();
+  while (node != tail_) {
+    if (node->key_ == key) return node;
+    node = node->next_;
   }
   return nullptr;
 }
 
 // O(n)
-bool LinkedList::includes(int key) const {
-  Node* node = first();
-  while (node != tail) {
-    if (node->key == key) {
+bool LinkedList::Includes(int key) const {
+  Node* node = First();
+  while (node != tail_) {
+    if (node->key_ == key) {
       return true;
     }
-    node = node->next;
+    node = node->next_;
   }
   return false;
 }
 
-bool LinkedList::is_empty() const {
-  return first() == tail;
+bool LinkedList::IsEmpty() const {
+  return First() == tail_;
 }
 
 // debugger
-void LinkedList::print() const {
+void LinkedList::Print() const {
   int iter = 1;
-  Node* node = first();
+  Node* node = First();
   std::cout << "{ ";
-  while (node != tail) {
-    if (iter < count) std::cout << "[" << node->key << "," << node->val << "], ";
-    if (iter == count) std::cout << "[" << node->key << "," << node->val << "]";
+  while (node != tail_) {
+    if (iter < count_) std::cout << "[" << node->key_ << "," << node->val_ << "], ";
+    if (iter == count_) std::cout << "[" << node->key_ << "," << node->val_ << "]";
     iter++;
-    node = node->next;
+    node = node->next_;
   }
   std::cout << " }" << std::endl;
 }

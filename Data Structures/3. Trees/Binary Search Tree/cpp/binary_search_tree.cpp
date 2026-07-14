@@ -1,122 +1,122 @@
 #include "binary_search_tree.hpp"
 
 /* constructor */
-BinarySearchTree::BinarySearchTree(BSTNode* root) :
-  root{root} {
+BinarySearchTree::BinarySearchTree(TreeNode* root) :
+  root_{root} {
 }
 
 BinarySearchTree::~BinarySearchTree() {
-  if (root) delete root;
+  if (root_) delete root_;
 }
 
 /* basic operations */
 // O(log(n))
-BSTNode* BinarySearchTree::insert(int value) {
-  BSTNode* node = new BSTNode(value);
-  if (root == nullptr) {
-    root = node;
+TreeNode* BinarySearchTree::Insert(int value) {
+  TreeNode* node = new TreeNode(value);
+  if (root_ == nullptr) {
+    root_ = node;
   } else {
-    root->append(node);
+    root_->Append(node);
   }
   return node;
 }
 
 // O(log(n))
-void BinarySearchTree::remove(int value) {
-  std::vector<BSTNode*> pair = get_target(value);
-  BSTNode* target = pair[0];
-  BSTNode* parent = pair[1];
-  
-  if (target == root) {
-    BSTNode* replacement = root->left->max();
-    remove(replacement->value);
-    replacement->left = root->left;
-    replacement->rite = root->rite;
-    root = replacement;
+void BinarySearchTree::Remove(int value) {
+  std::vector<TreeNode*> pair = GetTarget(value);
+  TreeNode* target = pair[0];
+  TreeNode* parent = pair[1];
+
+  if (target == root_) {
+    TreeNode* replacement = root_->left_->Max();
+    Remove(replacement->value_);
+    replacement->left_ = root_->left_;
+    replacement->rite_ = root_->rite_;
+    root_ = replacement;
     return;
   }
-  
-  bool isLeft = false;
-  if (target->value <= parent->value) isLeft = true;
-  
-  if (target->children().size() == 0) {
-    isLeft ? parent->left = nullptr : parent->rite = nullptr;
+
+  bool is_left = false;
+  if (target->value_ <= parent->value_) is_left = true;
+
+  if (target->Children().size() == 0) {
+    is_left ? parent->left_ = nullptr : parent->rite_ = nullptr;
     return;
   }
-  
-  if (target->children().size() == 1) {
-    if (target->left) {
-      isLeft ? parent->left = target->left : parent->rite = target->left;
+
+  if (target->Children().size() == 1) {
+    if (target->left_) {
+      is_left ? parent->left_ = target->left_ : parent->rite_ = target->left_;
     } else {
-      isLeft ? parent->left = target->rite : parent->rite = target->rite;
+      is_left ? parent->left_ = target->rite_ : parent->rite_ = target->rite_;
     }
     return;
   }
-  
-  if (target->children().size() == 2) {
-    BSTNode* replacement = target->left->max();
-    remove(replacement->value);
-    replacement->left = target->left;
-    replacement->rite = target->rite;
-    isLeft ? parent->left = replacement : parent->rite = replacement;
+
+  if (target->Children().size() == 2) {
+    TreeNode* replacement = target->left_->Max();
+    Remove(replacement->value_);
+    replacement->left_ = target->left_;
+    replacement->rite_ = target->rite_;
+    is_left ? parent->left_ = replacement : parent->rite_ = replacement;
   }
 }
 
 // O(log(n))
-BSTNode* BinarySearchTree::find(int value) const {
-  BSTNode* node = root;
+TreeNode* BinarySearchTree::Find(int value) const {
+  TreeNode* node = root_;
   while (node) {
-    if (node->value == value) return node;
-    node = (value < node->value) ? node->left : node->rite;
+    if (node->value_ == value) return node;
+    node = (value < node->value_) ? node->left_ : node->rite_;
   }
   return nullptr;
 }
 
 // O(log(n))
-bool BinarySearchTree::includes(int value) const {
-  BSTNode* node = root;
+bool BinarySearchTree::Includes(int value) const {
+  TreeNode* node = root_;
   while (node) {
-    if (node->value == value) return true;
-    node = (value < node->value) ? node->left : node->rite;
+    if (node->value_ == value) return true;
+    node = (value < node->value_) ? node->left_ : node->rite_;
   }
   return false;
 }
 
-std::vector<BSTNode*> BinarySearchTree::get_target(int value) const {
-  BSTNode* target = root;
-  BSTNode* parent = nullptr;
-  std::vector<BSTNode*> pair;
-  
+std::vector<TreeNode*> BinarySearchTree::GetTarget(int value) const {
+  TreeNode* target = root_;
+  TreeNode* parent = nullptr;
+  std::vector<TreeNode*> pair;
+
   while (target) {
-    if (target->value == value) {
+    if (target->value_ == value) {
       pair.push_back(target);
       pair.push_back(parent);
       return pair;
     }
     parent = target;
-    target = (value < target->value) ? target->left : target->rite;
+    target = (value < target->value_) ? target->left_ : target->rite_;
   }
-  
+
   return pair;
 }
 
-int BinarySearchTree::depth(BSTNode* node) const {
+int BinarySearchTree::Depth(TreeNode* node) const {
   if (!node) return 0;
-  int left = depth(node->left) + 1;
-  int rite = depth(node->rite) + 1;
+  int left = Depth(node->left_) + 1;
+  int rite = Depth(node->rite_) + 1;
   return left >= rite ? left : rite;
 }
 
-bool BinarySearchTree::is_balanced(BSTNode* node) const {
+bool BinarySearchTree::IsBalanced(TreeNode* node) const {
   if (!node) return true;
-  int left = depth(node->left);
-  int rite = depth(node->rite);
+  int left = Depth(node->left_);
+  int rite = Depth(node->rite_);
   int difference = abs(left - rite);
-  
+
   if (difference <= 1) {
-    bool leftBal = is_balanced(node->rite);
-    bool riteBal = is_balanced(node->left);
-    return leftBal && riteBal;
+    bool left_bal = IsBalanced(node->rite_);
+    bool rite_bal = IsBalanced(node->left_);
+    return left_bal && rite_bal;
   } else {
     return false;
   }

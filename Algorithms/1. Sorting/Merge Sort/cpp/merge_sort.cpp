@@ -1,53 +1,53 @@
 #include "merge_sort.hpp"
 
 // nlog(n)
-std::vector<int> merge_sort(std::vector<int> array) {
+std::vector<int> MergeSort(std::vector<int> array) {
   if (array.size() <= 1) return array;
-  
-  int midIndex = (int) array.size() / 2;
+
+  int mid_index = (int) array.size() / 2;
   std::vector<int> left;
   std::vector<int> rite;
-  
+
   if (array.size() & 1) {
-    left = std::vector<int>(array.begin(), array.end() - midIndex);
-    rite = std::vector<int>(array.begin() + midIndex + 1, array.end());
+    left = std::vector<int>(array.begin(), array.end() - mid_index);
+    rite = std::vector<int>(array.begin() + mid_index + 1, array.end());
   } else {
-    left = std::vector<int>(array.begin(), array.end() - midIndex);
-    rite = std::vector<int>(array.begin() + midIndex, array.end());
+    left = std::vector<int>(array.begin(), array.end() - mid_index);
+    rite = std::vector<int>(array.begin() + mid_index, array.end());
   }
-  
-  left = merge_sort(left);
-  rite = merge_sort(rite);
-  return merge(left, rite);
+
+  left = MergeSort(left);
+  rite = MergeSort(rite);
+  return Merge(left, rite);
 }
 
 // helper function
-std::vector<int> merge(std::vector<int> left, std::vector<int> rite) {
+std::vector<int> Merge(std::vector<int> left, std::vector<int> rite) {
   std::vector<int> result;
-  
+
   while (!left.empty() && !rite.empty()) {
-      
+
     if (left[0] < rite[0]) {
       result.push_back(left[0]);
       left.erase(left.begin());
-      
+
     } else if (left[0] > rite[0]) {
       result.push_back(rite[0]);
       rite.erase(rite.begin());
-      
+
     } else {
       result.push_back(left[0]);
       left.erase(left.begin());
     }
   }
-  
+
   result.insert(result.end(), left.begin(), left.end());
   result.insert(result.end(), rite.begin(), rite.end());
   return result;
 }
 
 // debugger
-void print(std::vector<int> array) {
+void Print(std::vector<int> array) {
   std::cout << "{ ";
   for (int index = 0; index < array.size(); index++) {
     std::cout << array[index];

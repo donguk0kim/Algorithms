@@ -1,98 +1,99 @@
-#include <iostream>
-#include <stdexcept>
 #include "dynamic_array.hpp"
 
+#include <iostream>
+#include <stdexcept>
+
 /* Constructor & Destructor */
-DynamicArray::DynamicArray() : count{0}, capacity{5} {
-  store = new int[capacity];
-  fill();
+DynamicArray::DynamicArray() : count_{0}, capacity_{5} {
+  store_ = new int[capacity_];
+  Fill();
 }
 
 DynamicArray::~DynamicArray() {
-  delete[] store;
+  delete[] store_;
 }
 
 /* Basic Operations */
 
 // O(1)
 int& DynamicArray::operator[] (int index) {
-  check_index(index);
-  return store[index];
+  CheckIndex(index);
+  return store_[index];
 }
 
 // O(1)
-void DynamicArray::push(int val) {
-  if (count == capacity) resize();
-  (*this)[count] = val;
-  count++;
+void DynamicArray::Push(int val) {
+  if (count_ == capacity_) Resize();
+  (*this)[count_] = val;
+  count_++;
 }
 
 // O(1)
-int DynamicArray::pop() {
-  check_index(count - 1);
-  count--;
-  (*this)[count] = NULL;
-  return store[count];
+int DynamicArray::Pop() {
+  CheckIndex(count_ - 1);
+  count_--;
+  (*this)[count_] = NULL;
+  return store_[count_];
 }
 
 // O(n)
-void DynamicArray::unshift(int val) {
-  if (count == capacity) resize();
-  for (int index = count - 1; index >= 0; index--) {
+void DynamicArray::Unshift(int val) {
+  if (count_ == capacity_) Resize();
+  for (int index = count_ - 1; index >= 0; index--) {
     (*this)[index + 1] = (*this)[index];
   }
   (*this)[0] = val;
-  count++;
+  count_++;
 }
 
 // O(n)
-int DynamicArray::shift() {
-  check_index(0);
+int DynamicArray::Shift() {
+  CheckIndex(0);
   int first = (*this)[0];
-  for (int index = 1; index < count; index++) {
+  for (int index = 1; index < count_; index++) {
     (*this)[index - 1] = (*this)[index];
   }
-  count--;
-  (*this)[count] = NULL;
+  count_--;
+  (*this)[count_] = NULL;
   return first;
 }
 
-void DynamicArray::print() {
+void DynamicArray::Print() {
   std::cout << "{ ";
-  for (int index = 0; index < capacity; index++) {
-    std::cout << store[index];
-    if (index < capacity - 1) std::cout << ", ";
+  for (int index = 0; index < capacity_; index++) {
+    std::cout << store_[index];
+    if (index < capacity_ - 1) std::cout << ", ";
   }
   std::cout << " }\n" << std::endl;
 }
 
 /* Private */
-void DynamicArray::check_index(int index) {
-  if (is_invalid(index)) {
+void DynamicArray::CheckIndex(int index) {
+  if (IsInvalid(index)) {
     throw std::out_of_range("Index out of bounds");
   }
 }
 
-bool DynamicArray::is_invalid(int index) {
+bool DynamicArray::IsInvalid(int index) {
   return index < 0;
 }
 
-void DynamicArray::resize() {
-  int new_capacity = capacity * 2;
-  int* new_store = new int[capacity];
-  
-  for (int index = 0; index < count; index++) {
+void DynamicArray::Resize() {
+  int new_capacity = capacity_ * 2;
+  int* new_store = new int[capacity_];
+
+  for (int index = 0; index < count_; index++) {
     new_store[index] = (*this)[index];
   }
-  
-  delete[] store;
-  store = new_store;
-  capacity = new_capacity;
-  fill();
+
+  delete[] store_;
+  store_ = new_store;
+  capacity_ = new_capacity;
+  Fill();
 }
 
-void DynamicArray::fill() {
-  for (int index = count; index < capacity; index++) {
+void DynamicArray::Fill() {
+  for (int index = count_; index < capacity_; index++) {
     (*this)[index] = NULL;
   }
 }

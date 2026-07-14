@@ -1,3 +1,5 @@
-#include "../Binary Search Tree/bst_node.hpp"
+#pragma once
 
-inline std::vector<BSTNode*> bfs(BSTNode* root);
+#include "../Binary Search Tree/tree_node.hpp"
+
+inline std::vector<TreeNode*> Bfs(TreeNode* root);

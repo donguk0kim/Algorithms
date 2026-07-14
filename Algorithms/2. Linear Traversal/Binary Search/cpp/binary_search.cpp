@@ -1,26 +1,26 @@
 #include "binary_search.hpp"
 
 // log(n)
-int binary_search(std::vector<int> array, int target) {
-  
-  int midIndex = (int) array.size() / 2;
-  int mid = array[midIndex];
-  if (mid == target) return midIndex;
+int BinarySearch(std::vector<int> array, int target) {
+
+  int mid_index = (int) array.size() / 2;
+  int mid = array[mid_index];
+  if (mid == target) return mid_index;
   if (array.size() == 1 && mid != target) return -1;
-  
-  std::vector<int> left (array.begin(), array.end() - midIndex);
-  std::vector<int> rite (array.begin() + midIndex + 1, array.end());
-  
+
+  std::vector<int> left (array.begin(), array.end() - mid_index);
+  std::vector<int> rite (array.begin() + mid_index + 1, array.end());
+
   if (mid > target) {
-    return binary_search(left, target);
+    return BinarySearch(left, target);
   } else {
-    int index = binary_search(rite, target);
-    return index < 0 ? index : midIndex + index + 1;
+    int index = BinarySearch(rite, target);
+    return index < 0 ? index : mid_index + index + 1;
   }
 }
 
 // debugger
-void print(std::vector<int> array) {
+void Print(std::vector<int> array) {
   std::cout << "{ ";
   for (int index = 0; index < array.size(); index++) {
     std::cout << array[index];

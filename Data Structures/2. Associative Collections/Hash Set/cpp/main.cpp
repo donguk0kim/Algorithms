@@ -1,42 +1,43 @@
-#include <iostream>
 #include "hash_set.hpp"
 
-void print(int number) {
+#include <iostream>
+
+void Print(int number) {
   std::cout << number << std::endl;
 }
 
-void sprint(const char* string) {
+void Sprint(const char* string) {
   std::cout << string << std::endl;
 }
 
 int main() {
-  
-  // test case - HashSet::insert
-  sprint("test case - HashSet::insert");
-  HashSet hashset;
-  hashset.insert(1);
-  hashset.insert(2);
-  hashset.insert(3);
-  hashset.insert(4);
-  hashset.insert(5);
-  hashset.insert(6);
-  hashset.print();
-  sprint("");
-  
-  // test case - HashSet::remove
-  sprint("test case - HashSet::remove");
-  hashset.remove(2);
-  hashset.remove(3);
-  hashset.remove(10);
-  hashset.print();
-  sprint("");
 
-  // test case - HashSet::includes
-  sprint("test case - HashSet::includes");
-  print(hashset.includes(1));
-  print(hashset.includes(5));
-  print(hashset.includes(10));
-  sprint("");
-  
+  // test case - HashSet::Insert
+  Sprint("test case - HashSet::Insert");
+  HashSet hashset;
+  hashset.Insert(1);
+  hashset.Insert(2);
+  hashset.Insert(3);
+  hashset.Insert(4);
+  hashset.Insert(5);
+  hashset.Insert(6);
+  hashset.Print();
+  Sprint("");
+
+  // test case - HashSet::Remove
+  Sprint("test case - HashSet::Remove");
+  hashset.Remove(2);
+  hashset.Remove(3);
+  hashset.Remove(10);
+  hashset.Print();
+  Sprint("");
+
+  // test case - HashSet::Includes
+  Sprint("test case - HashSet::Includes");
+  Print(hashset.Includes(1));
+  Print(hashset.Includes(5));
+  Print(hashset.Includes(10));
+  Sprint("");
+
   return 0;
 }

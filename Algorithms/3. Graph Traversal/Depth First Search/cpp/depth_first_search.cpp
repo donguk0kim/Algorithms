@@ -1,11 +1,11 @@
 #include "depth_first_search.hpp"
 
-inline void dfs(std::vector<BSTNode*>& order, BSTNode* root) {
-  BSTNode* child;
+inline void Dfs(std::vector<TreeNode*>& order, TreeNode* root) {
+  TreeNode* child;
   order.push_back(root);
-  std::vector<BSTNode*> children = root->children();
+  std::vector<TreeNode*> children = root->Children();
   for (int index = 0; index < children.size(); index++) {
     child = children[index];
-    child->dfs(order);
+    child->Dfs(order);
   }
 }

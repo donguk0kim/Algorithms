@@ -1,10 +1,12 @@
-#include <vector>
+#pragma once
+
 #include <iostream>
+#include <vector>
 
-void print(int value);
+void Print(int value);
 
-void sprint(const char* string);
+void Sprint(const char* string);
 
-void vprint(std::vector<int> array);
+void Vprint(std::vector<int> array);
 
-void vvprint(std::vector<std::vector<int>> array);
+void Vvprint(std::vector<std::vector<int>> array);

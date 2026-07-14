@@ -1,20 +1,20 @@
 #include "quicksort.hpp"
 
 // nlog(n) but worst case n^2
-std::vector<int> quicksort(std::vector<int> array) {
+std::vector<int> Quicksort(std::vector<int> array) {
   int length = (int) array.size();
   if (length <= 1) return array;
-  
-  int pivotIndex = length / 2;
-  int pivot = array[pivotIndex];
-  
+
+  int pivot_index = length / 2;
+  int pivot = array[pivot_index];
+
   std::vector<int> left;
   std::vector<int> pivs;
   std::vector<int> rite;
-  
+
   for (int index = 0; index < length; index++) {
     int element = array[index];
-    
+
     if (element < pivot) {
       left.push_back(element);
     } else if (element > pivot) {
@@ -23,43 +23,43 @@ std::vector<int> quicksort(std::vector<int> array) {
       pivs.push_back(element);
     }
   }
-  
-  left = quicksort(left);
-  rite = quicksort(rite);
+
+  left = Quicksort(left);
+  rite = Quicksort(rite);
   left.insert(left.end(), pivs.begin(), pivs.end());
   left.insert(left.end(), rite.begin(), rite.end());
   return left;
 }
 
 // nlog(n) but worst case n^2
-void quicksort_inplace(std::vector<int>& array, int start, int end) {
+void QuicksortInplace(std::vector<int>& array, int start, int end) {
   if (end <= start) return;
-  int wall = partition(array, start, end);
-  quicksort_inplace(array, start, wall - 1);
-  quicksort_inplace(array, wall + 1, end);
+  int wall = Partition(array, start, end);
+  QuicksortInplace(array, start, wall - 1);
+  QuicksortInplace(array, wall + 1, end);
 }
 
-int partition(std::vector<int>& array, int start, int end) {
+int Partition(std::vector<int>& array, int start, int end) {
   int wall = start;
   int pivot = array[start];
 
   for (int k = (start + 1); k <= end; k++) {
     int element = array[k];
-    
+
     if (element <= pivot) {
       wall++;
       array[k] = array[wall];
       array[wall] = element;
     }
   }
-  
+
   array[start] = array[wall];
   array[wall] = pivot;
   return wall;
 }
 
 // debugger
-void print(std::vector<int> array) {
+void Print(std::vector<int> array) {
   std::cout << "{ ";
   for (int index = 0; index < array.size(); index++) {
     std::cout << array[index];

@@ -1,26 +1,28 @@
-#include "bst_node.hpp"
+#pragma once
+
+#include "tree_node.hpp"
 
 class BinarySearchTree {
 public:
   // member variables
-  BSTNode* root;
-    
+  TreeNode* root_;
+
 public:
   // constructor & destructor
-  BinarySearchTree(BSTNode* root = nullptr);
+  BinarySearchTree(TreeNode* root = nullptr);
   ~BinarySearchTree();
-  
+
   // basic operations
-  void remove(int value);
-  BSTNode* insert(int value);
-  bool includes(int value) const;
-  BSTNode* find(int value) const;
-  
+  void Remove(int value);
+  TreeNode* Insert(int value);
+  bool Includes(int value) const;
+  TreeNode* Find(int value) const;
+
   // advanced operations
-  int depth(BSTNode* node) const;
-  bool is_balanced(BSTNode* node) const;
-  
+  int Depth(TreeNode* node) const;
+  bool IsBalanced(TreeNode* node) const;
+
 private:
   // internal
-  std::vector<BSTNode*> get_target(int value) const;
+  std::vector<TreeNode*> GetTarget(int value) const;
 };

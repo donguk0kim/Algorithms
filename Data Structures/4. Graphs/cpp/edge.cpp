@@ -1,24 +1,25 @@
-#include <iostream>
 #include "edge.hpp"
 
+#include <iostream>
+
 // constructor
-Edge::Edge(Node* prevNode, Node* nextNode, int weight) :
-prevNode{prevNode},
-nextNode{nextNode},
-weight{weight} {
-  connect();
+Edge::Edge(Node* prev_node, Node* next_node, int weight) :
+prev_node_{prev_node},
+next_node_{next_node},
+weight_{weight} {
+  Connect();
 }
 
 // basic operations
-void Edge::destroy() {
-  prevNode->nextEdges.remove(this);
-  nextNode->prevEdges.remove(this);
-  prevNode = nullptr;
-  nextNode = nullptr;
+void Edge::Destroy() {
+  prev_node_->next_edges_.remove(this);
+  next_node_->prev_edges_.remove(this);
+  prev_node_ = nullptr;
+  next_node_ = nullptr;
 }
 
 // private members
-void Edge::connect() {
-  prevNode->nextEdges.push_back(this);
-  nextNode->prevEdges.push_back(this);
+void Edge::Connect() {
+  prev_node_->next_edges_.push_back(this);
+  next_node_->prev_edges_.push_back(this);
 }

@@ -1,42 +1,43 @@
-#include <iostream>
-#include "max_int_set.hpp"
 #include "integer_set.hpp"
+#include "max_int_set.hpp"
 
-void sprint(const char* string) {
+#include <iostream>
+
+void Sprint(const char* string) {
   std::cout << string << std::endl;
 }
 
 int main() {
-  
+
   // test case - MaxIntSet
-  sprint("test case - MaxIntSet");
+  Sprint("test case - MaxIntSet");
   MaxIntSet maxintset(5);
-  maxintset.insert(0);
-  maxintset.insert(2);
-  maxintset.insert(4);
-  maxintset.remove(2);
-  maxintset.print();
-  sprint("");
-  
-  // test case - IntSet::insert
-  sprint("test case - IntSet::insert");
+  maxintset.Insert(0);
+  maxintset.Insert(2);
+  maxintset.Insert(4);
+  maxintset.Remove(2);
+  maxintset.Print();
+  Sprint("");
+
+  // test case - IntSet::Insert
+  Sprint("test case - IntSet::Insert");
   IntegerSet intset;
-  intset.insert(1);
-  intset.insert(2);
-  intset.insert(3);
-  intset.insert(4);
-  intset.insert(5);
-  intset.remove(2);
-  intset.remove(3);
-  intset.print();
-  sprint("");
-  
-  // test case - IntSet::includes
-  sprint("test case - IntSet::includes");
-  std::cout << intset.includes(1) << std::endl;
-  std::cout << intset.includes(2) << std::endl;
-  std::cout << intset.length() << std::endl;
-  sprint("");
-  
+  intset.Insert(1);
+  intset.Insert(2);
+  intset.Insert(3);
+  intset.Insert(4);
+  intset.Insert(5);
+  intset.Remove(2);
+  intset.Remove(3);
+  intset.Print();
+  Sprint("");
+
+  // test case - IntSet::Includes
+  Sprint("test case - IntSet::Includes");
+  std::cout << intset.Includes(1) << std::endl;
+  std::cout << intset.Includes(2) << std::endl;
+  std::cout << intset.Length() << std::endl;
+  Sprint("");
+
   return 0;
 }

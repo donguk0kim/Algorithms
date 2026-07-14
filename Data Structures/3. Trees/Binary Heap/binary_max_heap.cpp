@@ -1,5 +1,6 @@
-#include <algorithm>
 #include "binary_max_heap.hpp"
+
+#include <algorithm>
 
 // constructor
 BinaryMaxHeap::BinaryMaxHeap() {
@@ -8,41 +9,41 @@ BinaryMaxHeap::BinaryMaxHeap() {
 
 // destructor
 BinaryMaxHeap::~BinaryMaxHeap() {
-  store.clear();
+  store_.clear();
 }
 
 // basic operations
-int BinaryMaxHeap::count() {
-  return (int) store.size();
+int BinaryMaxHeap::Count() {
+  return (int) store_.size();
 }
 
-int BinaryMaxHeap::max() {
-  return store.front();
+int BinaryMaxHeap::Max() {
+  return store_.front();
 }
 
 // O(log(n))
-int BinaryMaxHeap::extract() {
-  int maximum = max();
-  store[0] = store.back();
-  store.pop_back();
-  heapify_down(store, 0, count());
+int BinaryMaxHeap::Extract() {
+  int maximum = Max();
+  store_[0] = store_.back();
+  store_.pop_back();
+  HeapifyDown(store_, 0, Count());
   return maximum;
 }
 
 // O(log(n))
-void BinaryMaxHeap::insert(int value) {
-  store.push_back(value);
-  BinaryMaxHeap::heapify_up(store, count() - 1);
+void BinaryMaxHeap::Insert(int value) {
+  store_.push_back(value);
+  BinaryMaxHeap::HeapifyUp(store_, Count() - 1);
 }
 
 // helper methods
-int BinaryMaxHeap::parent_index(int childIndex) {
-  int index = (childIndex - 1) / 2;
-  if (childIndex < 0) throw std::out_of_range("Root has no parent");
+int BinaryMaxHeap::ParentIndex(int child_index) {
+  int index = (child_index - 1) / 2;
+  if (child_index < 0) throw std::out_of_range("Root has no parent");
   return index;
 }
 
-std::vector<int> BinaryMaxHeap::child_indices(int parent_index, int count) {
+std::vector<int> BinaryMaxHeap::ChildIndices(int parent_index, int count) {
   std::vector<int> indices;
   int left = (parent_index * 2 + 1);
   int rite = (parent_index * 2 + 2);
@@ -51,46 +52,46 @@ std::vector<int> BinaryMaxHeap::child_indices(int parent_index, int count) {
   return indices;
 }
 
-int BinaryMaxHeap::index_of_max(std::vector<int>& array, std::vector<int>& indices) {
+int BinaryMaxHeap::IndexOfMax(std::vector<int>& array, std::vector<int>& indices) {
   if (indices.size() == 0) return -1;
   if (indices.size() == 1) return indices.front();
-  
+
   int left = indices[0];
   int rite = indices[1];
   return array[left] > array[rite] ? left : rite;
 }
 
 // advanced methods
-void BinaryMaxHeap::heapify_up(std::vector<int>& array, int childIndex) {
-  if (childIndex == 0) return;
-  
-  int parent_index = BinaryMaxHeap::parent_index(childIndex);
+void BinaryMaxHeap::HeapifyUp(std::vector<int>& array, int child_index) {
+  if (child_index == 0) return;
+
+  int parent_index = BinaryMaxHeap::ParentIndex(child_index);
   int parent = array[parent_index];
-  int child = array[childIndex];
-  
+  int child = array[child_index];
+
   if (child > parent) {
-    array[childIndex] = parent;
+    array[child_index] = parent;
     array[parent_index] = child;
-    BinaryMaxHeap::heapify_up(array, parent_index);
+    BinaryMaxHeap::HeapifyUp(array, parent_index);
   }
 }
 
-void BinaryMaxHeap::heapify_down(std::vector<int>& array, int parent_index, int count) {
-  std::vector<int> indices = BinaryMaxHeap::child_indices(parent_index, (int) count);
-  int childIndex = BinaryMaxHeap::index_of_max(array, indices);
-  if (childIndex == -1) return;
+void BinaryMaxHeap::HeapifyDown(std::vector<int>& array, int parent_index, int count) {
+  std::vector<int> indices = BinaryMaxHeap::ChildIndices(parent_index, (int) count);
+  int child_index = BinaryMaxHeap::IndexOfMax(array, indices);
+  if (child_index == -1) return;
   int parent = array[parent_index];
-  int child = array[childIndex];
-  
+  int child = array[child_index];
+
   if (parent < child) {
-    array[childIndex] = parent;
+    array[child_index] = parent;
     array[parent_index] = child;
-    BinaryMaxHeap::heapify_down(array, childIndex, count);
+    BinaryMaxHeap::HeapifyDown(array, child_index, count);
   }
 }
 
 // debugger
-void BinaryMaxHeap::print(std::vector<int>& array) {
+void BinaryMaxHeap::Print(std::vector<int>& array) {
   std::cout << "{ ";
   for (int index = 0; index < array.size(); index++) {
     std::cout << array[index];

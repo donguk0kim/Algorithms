@@ -1,99 +1,100 @@
-#include <string>
-#include <sstream>
-#include <iostream>
-#include <algorithm>
 #include "hash_set.hpp"
 
+#include <algorithm>
+#include <iostream>
+#include <sstream>
+#include <string>
+
 /* constructor */
-HashSet::HashSet() : count{0}, numBuckets{5} {
-  this->store = new std::vector<int>[numBuckets];
+HashSet::HashSet() : count_{0}, num_buckets_{5} {
+  store_ = new std::vector<int>[num_buckets_];
 }
 
 
 /* basic operations */
-int HashSet::length() const {
-  return count;
+int HashSet::Length() const {
+  return count_;
 }
 
 // O(1)
-void HashSet::insert(int value) {
-  if (includes(value)) return;
-  if (count == numBuckets) resize();
-  int internal = bucket_index(value, numBuckets);
-  std::vector<int>* bucket = &store[internal];
+void HashSet::Insert(int value) {
+  if (Includes(value)) return;
+  if (count_ == num_buckets_) Resize();
+  int internal = BucketIndex(value, num_buckets_);
+  std::vector<int>* bucket = &store_[internal];
   bucket->push_back(value);
-  count++;
+  count_++;
 }
 
 // O(1) but worst case O(k)
-void HashSet::remove(int value) {
-  int internal = bucket_index(value, numBuckets);
-  std::vector<int>* bucket = &store[internal];
-  int index = index_at(*bucket, value);
+void HashSet::Remove(int value) {
+  int internal = BucketIndex(value, num_buckets_);
+  std::vector<int>* bucket = &store_[internal];
+  int index = IndexAt(*bucket, value);
   if (index == -1) return;
   bucket->erase(bucket->begin() + index);
-  count--;
+  count_--;
 }
 
 // O(1) but worst case O(k)
-bool HashSet::includes(int value) const {
-  int internal = bucket_index(value, numBuckets);
-  std::vector<int> bucket = store[internal];
+bool HashSet::Includes(int value) const {
+  int internal = BucketIndex(value, num_buckets_);
+  std::vector<int> bucket = store_[internal];
   return std::find(bucket.begin(), bucket.end(), value) != bucket.end();
 }
 
 /* debugger */
-void HashSet::print() const {
+void HashSet::Print() const {
   std::cout << "{\n";
-  for (int indexRow = 0; indexRow < numBuckets; indexRow++) {
+  for (int index_row = 0; index_row < num_buckets_; index_row++) {
     std::cout << "{ ";
-    for (int indexCol = 0; indexCol < store[indexRow].size(); indexCol++) {
-      std::cout << store[indexRow][indexCol];
-      if (indexCol < store[indexRow].size() - 1) std::cout << ", ";
+    for (int index_col = 0; index_col < store_[index_row].size(); index_col++) {
+      std::cout << store_[index_row][index_col];
+      if (index_col < store_[index_row].size() - 1) std::cout << ", ";
     }
     std::cout << " }";
-    if (indexRow < numBuckets - 1) std::cout << ",\n";
+    if (index_row < num_buckets_ - 1) std::cout << ",\n";
   }
   std::cout << "\n}\n" << std::endl;
 }
 
 
 /* private */
-int HashSet::hash(int value) const {
+int HashSet::Hash(int value) const {
   std::hash<std::string> hasher;
   std::stringstream string;
   string << value;
   return (int) hasher(string.str());
 }
 
-int HashSet::bucket_index(int value, int nBuckets) const {
-  int hashValue = hash(value);
-  if (hashValue >= 0) return hashValue % nBuckets;
-  return (-1 * hashValue) % nBuckets;
+int HashSet::BucketIndex(int value, int n_buckets) const {
+  int hash_value = Hash(value);
+  if (hash_value >= 0) return hash_value % n_buckets;
+  return (-1 * hash_value) % n_buckets;
 }
 
-int HashSet::index_at(std::vector<int> bucket, int value) const {
+int HashSet::IndexAt(std::vector<int> bucket, int value) const {
   for (int index = 0; index < bucket.size(); index++) {
     if (bucket[index] == value) return index;
   }
   return -1;
 }
 
-void HashSet::resize() {
+void HashSet::Resize() {
   int value;
-  int newIndex;
-  int newBuckets = numBuckets * 2;
-  std::vector<int>* newStore = new std::vector<int>[newBuckets];
-  
-  for (int bucketIdx = 0; bucketIdx < numBuckets; bucketIdx++) {
-    for (int index = 0; index < store[bucketIdx].size(); index++) {
-      value = store[bucketIdx][index];
-      newIndex = bucket_index(value, newBuckets);
-      newStore[newIndex].push_back(value);
+  int new_index;
+  int new_buckets = num_buckets_ * 2;
+  std::vector<int>* new_store = new std::vector<int>[new_buckets];
+
+  for (int bucket_idx = 0; bucket_idx < num_buckets_; bucket_idx++) {
+    for (int index = 0; index < store_[bucket_idx].size(); index++) {
+      value = store_[bucket_idx][index];
+      new_index = BucketIndex(value, new_buckets);
+      new_store[new_index].push_back(value);
     }
   }
-  
-  delete[] store;
-  store = newStore;
-  numBuckets = newBuckets;
+
+  delete[] store_;
+  store_ = new_store;
+  num_buckets_ = new_buckets;
 }

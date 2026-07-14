@@ -1,24 +1,25 @@
-#include <iostream>
 #include "linked_list.hpp"
 
-void sprint(const char* string) {
+#include <iostream>
+
+void Sprint(const char* string) {
   std::cout << string << std::endl;
 }
 
 int main() {
-  
+
   // test case - basic operations
-  sprint("test case - basic operations");
+  Sprint("test case - basic operations");
   LinkedList list;
-  list.push(1, 1);
-  list.push(2, 2);
-  list.push(3, 3);
-  list.push(4, 4);
-  list.push(5, 5);
-  list.remove(3);
-  
-  list.print();
-  std::cout << list.count << std::endl;
-  
+  list.Push(1, 1);
+  list.Push(2, 2);
+  list.Push(3, 3);
+  list.Push(4, 4);
+  list.Push(5, 5);
+  list.Remove(3);
+
+  list.Print();
+  std::cout << list.count_ << std::endl;
+
   return 0;
 }

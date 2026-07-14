@@ -1,32 +1,34 @@
-#include <vector>
+#pragma once
+
 #include <iostream>
 #include <stdexcept>
+#include <vector>
 
 class BinaryMaxHeap {
   // member variables
 public:
-  std::vector<int> store;
-  
+  std::vector<int> store_;
+
 public:
   // constructor & destructor
   BinaryMaxHeap();
   ~BinaryMaxHeap();
-  
+
   // basic operations
-  int max();
-  int count();
-  int extract();
-  void insert(int value);
-  
+  int Max();
+  int Count();
+  int Extract();
+  void Insert(int value);
+
   // helper methods
-  static int parent_index(int childIndex);
-  static std::vector<int> child_indices(int parent_index, int count);
-  static int index_of_max(std::vector<int>& array, std::vector<int>& indices);
-  
+  static int ParentIndex(int child_index);
+  static std::vector<int> ChildIndices(int parent_index, int count);
+  static int IndexOfMax(std::vector<int>& array, std::vector<int>& indices);
+
   // advanced operations
-  static void heapify_up(std::vector<int>& array, int childIndex);
-  static void heapify_down(std::vector<int>& array, int parent_index, int count);
-  
+  static void HeapifyUp(std::vector<int>& array, int child_index);
+  static void HeapifyDown(std::vector<int>& array, int parent_index, int count);
+
   // debugger
-  static void print(std::vector<int>& array);
+  static void Print(std::vector<int>& array);
 };

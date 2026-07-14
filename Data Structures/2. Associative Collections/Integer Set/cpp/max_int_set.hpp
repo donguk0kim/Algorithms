@@ -1,23 +1,25 @@
+#pragma once
+
 class MaxIntSet {
   // member variables
-  int capacity;
-  bool* store;
-    
+  int capacity_;
+  bool* store_;
+
 public:
   // constructor
   MaxIntSet(int max);
-  
+
   // basic operations
-  void insert(int value);
-  void remove(int value);
-  bool includes(int value) const;
-  
+  void Insert(int value);
+  void Remove(int value);
+  bool Includes(int value) const;
+
   // debugger
-  void print() const;
-    
+  void Print() const;
+
 private:
   // internal members
-  void fill();
-  bool is_invalid(int index) const;
-  void check_index(int index) const;
+  void Fill();
+  bool IsInvalid(int index) const;
+  void CheckIndex(int index) const;
 };

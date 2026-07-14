@@ -2,16 +2,16 @@
 
 /* constructor */
 Node::Node(int key, int val) :
-  key{key},
-  val{val},
-  next{nullptr},
-  prev{nullptr} {
+  key_{key},
+  val_{val},
+  next_{nullptr},
+  prev_{nullptr} {
 }
 
 /* basic operations */
-void Node::destroy() {
-  next -> prev = prev;
-  prev -> next = next;
-  next = nullptr;
-  prev = nullptr;
+void Node::Destroy() {
+  next_->prev_ = prev_;
+  prev_->next_ = next_;
+  next_ = nullptr;
+  prev_ = nullptr;
 }

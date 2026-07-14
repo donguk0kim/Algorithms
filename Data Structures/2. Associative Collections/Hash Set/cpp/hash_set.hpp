@@ -1,29 +1,31 @@
+#pragma once
+
 #include <vector>
 
 class HashSet {
   // member variables
-  int count;
-  int numBuckets;
-  std::vector<int>* store;
-  
+  int count_;
+  int num_buckets_;
+  std::vector<int>* store_;
+
 public:
   // constructor
   HashSet();
-  
+
   // basic operations
-  int length() const;
-  void insert(int value);
-  void remove(int value);
-  bool includes(int value) const;
-  
+  int Length() const;
+  void Insert(int value);
+  void Remove(int value);
+  bool Includes(int value) const;
+
   // debugger
-  void print() const;
-  
+  void Print() const;
+
 private:
   // internal members
-  void fill();
-  void resize();
-  int hash(int value) const;
-  int bucket_index(int value, int nBuckets) const;
-  int index_at(std::vector<int> bucket, int value) const;
+  void Fill();
+  void Resize();
+  int Hash(int value) const;
+  int BucketIndex(int value, int n_buckets) const;
+  int IndexAt(std::vector<int> bucket, int value) const;
 };

@@ -2,12 +2,12 @@
 
 // constructor
 Node::Node(int value) :
-  value{value} {
+  value_{value} {
 }
 
 // destructor
 Node::~Node() {
-  prevEdges.clear();
-  nextEdges.clear();
-  value = 0;
+  prev_edges_.clear();
+  next_edges_.clear();
+  value_ = 0;
 }

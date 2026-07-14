@@ -1,10 +1,12 @@
+#pragma once
+
 #include <unordered_map>
 
 class Fibonacci {
-  std::unordered_map<int, int> cache;
-  
+  std::unordered_map<int, int> cache_;
+
 public:
   Fibonacci();
-  int top_down(int nth);
-  int bottom_up(int nth);
+  int TopDown(int nth);
+  int BottomUp(int nth);
 };

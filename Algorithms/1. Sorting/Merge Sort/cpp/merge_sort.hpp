@@ -1,8 +1,10 @@
-#include <vector>
+#pragma once
+
 #include <iostream>
+#include <vector>
 
-std::vector<int> merge_sort(std::vector<int> array);
+std::vector<int> MergeSort(std::vector<int> array);
 
-std::vector<int> merge(std::vector<int> left, std::vector<int> rite);
+std::vector<int> Merge(std::vector<int> left, std::vector<int> rite);
 
-void print(std::vector<int> array);
+void Print(std::vector<int> array);

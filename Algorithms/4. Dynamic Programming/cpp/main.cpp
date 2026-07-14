@@ -1,47 +1,47 @@
-#include "frog.hpp"
 #include "debugger.hpp"
 #include "fibonacci.hpp"
+#include "frog.hpp"
 #include "super_frog.hpp"
 
 int main() {
-  
+
   // test case - Fibonacci Top Down
-  sprint("test case - Fibonacci Top Down");
+  Sprint("test case - Fibonacci Top Down");
   Fibonacci fibonacci1;
-  print(fibonacci1.top_down(1));
-  print(fibonacci1.top_down(2));
-  print(fibonacci1.top_down(3));
-  print(fibonacci1.top_down(4));
-  print(fibonacci1.top_down(5));
-  sprint("");
-  
+  Print(fibonacci1.TopDown(1));
+  Print(fibonacci1.TopDown(2));
+  Print(fibonacci1.TopDown(3));
+  Print(fibonacci1.TopDown(4));
+  Print(fibonacci1.TopDown(5));
+  Sprint("");
+
   // test case - Fibonacci Bottom Up
-  sprint("test case - Fibonacci Bottom Up");
+  Sprint("test case - Fibonacci Bottom Up");
   Fibonacci fibonacci2;
-  print(fibonacci2.bottom_up(1));
-  print(fibonacci2.bottom_up(2));
-  print(fibonacci2.bottom_up(3));
-  print(fibonacci2.bottom_up(4));
-  print(fibonacci2.bottom_up(5));
-  sprint("");
-  
+  Print(fibonacci2.BottomUp(1));
+  Print(fibonacci2.BottomUp(2));
+  Print(fibonacci2.BottomUp(3));
+  Print(fibonacci2.BottomUp(4));
+  Print(fibonacci2.BottomUp(5));
+  Sprint("");
+
   // test case - Frog Top Down
-  sprint("test case - Frog Top Down");
+  Sprint("test case - Frog Top Down");
   Frog frog1;
-  vvprint(frog1.top_down(1));
-  vvprint(frog1.top_down(2));
-  vvprint(frog1.top_down(3));
-  vvprint(frog1.top_down(4));
-  sprint("");
-  
+  Vvprint(frog1.TopDown(1));
+  Vvprint(frog1.TopDown(2));
+  Vvprint(frog1.TopDown(3));
+  Vvprint(frog1.TopDown(4));
+  Sprint("");
+
   // test case - Frog Bottom Up
-  sprint("test case - Frog Bottom Up");
+  Sprint("test case - Frog Bottom Up");
   Frog frog2;
-  vvprint(frog2.bottom_up(1));
-  vvprint(frog2.bottom_up(2));
-  vvprint(frog2.bottom_up(3));
-  vvprint(frog2.bottom_up(4));
-  sprint("");
-  
+  Vvprint(frog2.BottomUp(1));
+  Vvprint(frog2.BottomUp(2));
+  Vvprint(frog2.BottomUp(3));
+  Vvprint(frog2.BottomUp(4));
+  Sprint("");
+
   return 0;
 }

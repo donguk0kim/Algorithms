@@ -2,110 +2,110 @@
 
 /* constructor & destructor */
 RingBuffer::RingBuffer() {
-  start = 0;
-  count = 0;
-  capacity = 5;
-  store = new int[capacity];
-  fill();
+  start_ = 0;
+  count_ = 0;
+  capacity_ = 5;
+  store_ = new int[capacity_];
+  Fill();
 }
 
 RingBuffer::~RingBuffer() {
-  delete[] store;
+  delete[] store_;
 }
 
 /* accessors */
 // O(1)
 int& RingBuffer::operator[] (int index) {
-  int internal = intern(index);
-  check_index(internal);
-  return store[internal];
+  int internal = Intern(index);
+  CheckIndex(internal);
+  return store_[internal];
 }
 
 /* basic operations */
 // O(1) ammortized
-void RingBuffer::push(int value) {
-  if (count == capacity) resize();
-  (*this)[count] = value;
-  count++;
+void RingBuffer::Push(int value) {
+  if (count_ == capacity_) Resize();
+  (*this)[count_] = value;
+  count_++;
 }
 
 // O(1) ammortized
-void RingBuffer::unshift(int value) {
-  if (count == capacity) resize();
-  (*this)[capacity - 1] = value;
-  start--;
-  count++;
+void RingBuffer::Unshift(int value) {
+  if (count_ == capacity_) Resize();
+  (*this)[capacity_ - 1] = value;
+  start_--;
+  count_++;
 }
 
 // O(1)
-int RingBuffer::pop() {
-  int value = (*this)[count - 1];
-  (*this)[count - 1] = NULL;
-  count--;
+int RingBuffer::Pop() {
+  int value = (*this)[count_ - 1];
+  (*this)[count_ - 1] = NULL;
+  count_--;
   return value;
 }
 
 // O(1)
-int RingBuffer::shift() {
+int RingBuffer::Shift() {
   int value = (*this)[0];
   (*this)[0] = NULL;
-  start++;
-  count--;
+  start_++;
+  count_--;
   return value;
 }
 
 /* debugger */
-void RingBuffer::print() const {
+void RingBuffer::Print() const {
   std::cout << "{ ";
-  for (int index = 0; index < capacity; index++) {
-    std::cout << store[index];
-    if (index < capacity - 1) std::cout << ", ";
+  for (int index = 0; index < capacity_; index++) {
+    std::cout << store_[index];
+    if (index < capacity_ - 1) std::cout << ", ";
   }
   std::cout << " }\n" << std::endl;
 }
 
 /* private */
-int RingBuffer::intern(int index) const {
-  return wrap(index + start) % capacity;
+int RingBuffer::Intern(int index) const {
+  return Wrap(index + start_) % capacity_;
 }
 
-int RingBuffer::wrap(int index) const {
+int RingBuffer::Wrap(int index) const {
   while (index < 0) {
-    index += capacity;
+    index += capacity_;
   }
   return index;
 }
-  
-void RingBuffer::check_index(int index) const {
-  if (is_invalid(index)) {
+
+void RingBuffer::CheckIndex(int index) const {
+  if (IsInvalid(index)) {
     throw std::out_of_range("Index out of bounds");
   }
 }
 
-bool RingBuffer::is_invalid(int index) const {
-  return index > capacity;
+bool RingBuffer::IsInvalid(int index) const {
+  return index > capacity_;
 }
 
-void RingBuffer::fill() {
-  for (int index = 0; index < capacity; index++) {
-    store[index] = NULL;
+void RingBuffer::Fill() {
+  for (int index = 0; index < capacity_; index++) {
+    store_[index] = NULL;
   }
 }
 
-void RingBuffer::resize() {
-  int new_capacity = capacity * 2;
+void RingBuffer::Resize() {
+  int new_capacity = capacity_ * 2;
   int* new_store = new int[new_capacity];
-  
+
   for (int index = 0; index < new_capacity; index++) {
-    if (index < capacity) {
+    if (index < capacity_) {
       new_store[index] = (*this)[index];
     } else {
       new_store[index] = NULL;
     }
   }
-  
-  start = 0;
-  delete[] store;
-  store = new_store;
-  capacity = new_capacity;
+
+  start_ = 0;
+  delete[] store_;
+  store_ = new_store;
+  capacity_ = new_capacity;
 }

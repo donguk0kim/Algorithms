@@ -1,31 +1,33 @@
+#pragma once
+
 #include "node.hpp"
 
 class LinkedList {
 public:
   // member variables
-  int count;
-  Node* head;
-  Node* tail;
-  
+  int count_;
+  Node* head_;
+  Node* tail_;
+
 public:
   // constructor & destructor
   LinkedList();
   ~LinkedList();
-  
+
   // accessors
-  Node* first() const;
-  Node* last() const;
-  
+  Node* First() const;
+  Node* Last() const;
+
   // basic operations
-  void push(int key, int val);
-  void remove(int key);
-  bool is_empty() const;
-  bool includes(int key) const;
-  Node* find(int key) const;
-  
+  void Push(int key, int val);
+  void Remove(int key);
+  bool IsEmpty() const;
+  bool Includes(int key) const;
+  Node* Find(int key) const;
+
   // debugger
-  void print() const;
-  
+  void Print() const;
+
 private:
   // internal member functions
 };

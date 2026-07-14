@@ -1,17 +1,17 @@
 #include "debugger.hpp"
 
 // print ints
-void print(int value) {
+void Print(int value) {
   std::cout << value << std::endl;
 }
 
 // print strings
-void sprint(const char* string) {
+void Sprint(const char* string) {
   std::cout << string << std::endl;
 }
 
 // print arrays
-void vprint(std::vector<int> array) {
+void Vprint(std::vector<int> array) {
   std::cout << "{ ";
   for (int k = 0; k < array.size(); k++) {
     std::cout << array[k];
@@ -21,10 +21,10 @@ void vprint(std::vector<int> array) {
 }
 
 // print 2d arrays
-void vvprint(std::vector<std::vector<int>> array) {
+void Vvprint(std::vector<std::vector<int>> array) {
   std::cout << "{ ";
   for (int k = 0; k < array.size(); k++) {
-    vprint(array[k]);
+    Vprint(array[k]);
     if (k < array.size() - 1) std::cout << ", ";
   }
   std::cout << " }" << std::endl;

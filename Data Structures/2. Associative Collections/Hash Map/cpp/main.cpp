@@ -1,21 +1,22 @@
-#include <iostream>
 #include "hash_map.hpp"
 
-void print(int value) {
+#include <iostream>
+
+void Print(int value) {
   std::cout << value << std::endl;
 }
 
 int main() {
   HashMap hashmap;
-  hashmap.set(1,1);
-  hashmap.set(2,2);
-  hashmap.set(3,3);
-  hashmap.set(4,4);
-  hashmap.set(5,5);
-  hashmap.print();
+  hashmap.Set(1,1);
+  hashmap.Set(2,2);
+  hashmap.Set(3,3);
+  hashmap.Set(4,4);
+  hashmap.Set(5,5);
+  hashmap.Print();
 
-  print(hashmap.includes(5));
-  print(hashmap.includes(10));
-  
+  Print(hashmap.Includes(5));
+  Print(hashmap.Includes(10));
+
   return 0;
 }

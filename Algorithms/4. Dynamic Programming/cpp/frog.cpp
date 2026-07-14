@@ -1,42 +1,42 @@
 #include "frog.hpp"
 
 Frog::Frog() {
-  this->cache[1] = std::vector<std::vector<int>> { { 1 } };
-  this->cache[2] = std::vector<std::vector<int>> { { 1, 1 }, { 2 } };
-  this->cache[3] = std::vector<std::vector<int>> { { 1, 1, 1 }, { 1, 2 }, { 2, 1 }, { 3 } };
+  cache_[1] = std::vector<std::vector<int>> { { 1 } };
+  cache_[2] = std::vector<std::vector<int>> { { 1, 1 }, { 2 } };
+  cache_[3] = std::vector<std::vector<int>> { { 1, 1, 1 }, { 1, 2 }, { 2, 1 }, { 3 } };
 }
 
 // Top Down
-std::vector<std::vector<int>> Frog::top_down(int numSteps) {
-  if (!cache[numSteps].empty()) return cache[numSteps];
-  
+std::vector<std::vector<int>> Frog::TopDown(int num_steps) {
+  if (!cache_[num_steps].empty()) return cache_[num_steps];
+
   for (int add = 1; add <= 3; add++) {
-    std::vector<std::vector<int>> steps = top_down(numSteps - add);
-    
+    std::vector<std::vector<int>> steps = TopDown(num_steps - add);
+
     for (int k = 0; k < steps.size(); k++) {
       std::vector<int> step = steps[k];
       step.push_back(add);
-      cache[numSteps].push_back(step);
+      cache_[num_steps].push_back(step);
     }
   }
-  
-  return cache[numSteps];
+
+  return cache_[num_steps];
 }
 
 // Bottom Up
-std::vector<std::vector<int>> Frog::bottom_up(int numSteps) {
-  for (int index = 4; index <= numSteps; index++) {
-    
+std::vector<std::vector<int>> Frog::BottomUp(int num_steps) {
+  for (int index = 4; index <= num_steps; index++) {
+
     for (int add = 1; add <= 3; add++) {
-      std::vector<std::vector<int>> steps = cache[index - add];
-      
+      std::vector<std::vector<int>> steps = cache_[index - add];
+
       for (int k = 0; k < steps.size(); k++) {
         std::vector<int> step = steps[k];
         step.push_back(add);
-        cache[index].push_back(step);
+        cache_[index].push_back(step);
       }
     }
   }
-  
-  return cache[numSteps];
+
+  return cache_[num_steps];
 }

@@ -1,80 +1,81 @@
-#include <string>
-#include <sstream>
-#include <iostream>
-#include <algorithm>
 #include "hash_map.hpp"
+
+#include <algorithm>
+#include <iostream>
+#include <sstream>
+#include <string>
 
 /* constructor */
 HashMap::HashMap():
-  count{0},
-  numBuckets{5} {
-  this->store = new std::list<int>[numBuckets];
+  count_{0},
+  num_buckets_{5} {
+  store_ = new std::list<int>[num_buckets_];
 }
 
 /* accessors */
-int HashMap::get(int key) const {
-  int internal = bucket_index(key, numBuckets);
-  std::list<int>* bucket = &store[internal];
+int HashMap::Get(int key) const {
+  int internal = BucketIndex(key, num_buckets_);
+  std::list<int>* bucket = &store_[internal];
   Node* node = **std::find(bucket->begin(), bucket->end(), key);
   return node->val;
 }
 
-void HashMap::set(int key, int val) {
-  if (count == numBuckets) resize();
-  int internal = bucket_index(key, numBuckets);
-  std::list<int>* bucket = &store[internal];
+void HashMap::Set(int key, int val) {
+  if (count_ == num_buckets_) Resize();
+  int internal = BucketIndex(key, num_buckets_);
+  std::list<int>* bucket = &store_[internal];
   bucket->push(key, val);
 }
 
 /* basic operations */
-void HashMap::remove(int key) {
-  int internal = bucket_index(key, numBuckets);
-  std::list<int>* bucket = &store[internal];
+void HashMap::Remove(int key) {
+  int internal = BucketIndex(key, num_buckets_);
+  std::list<int>* bucket = &store_[internal];
   bucket->remove(key);
 }
 
-bool HashMap::includes(int key) const {
-  int internal = bucket_index(key, numBuckets);
-  std::list<int>* bucket = &store[internal];
+bool HashMap::Includes(int key) const {
+  int internal = BucketIndex(key, num_buckets_);
+  std::list<int>* bucket = &store_[internal];
   return bucket->includes(key);
 }
 
 /* debugger */
-void HashMap::print() const {
+void HashMap::Print() const {
   std::cout << "\n{\n";
-  for (int indexRow = 0; indexRow < numBuckets; indexRow++) {
-    store[indexRow].print();
+  for (int index_row = 0; index_row < num_buckets_; index_row++) {
+    store_[index_row].print();
   }
   std::cout << "}\n" << std::endl;
 }
 
 /* private */
-int HashMap::bucket_index(int key, int nBuckets) const {
-  int hashValue = hash(key);
-  if (hashValue >= 0) return hashValue % nBuckets;
-  return (-1 * hashValue) % nBuckets;
+int HashMap::BucketIndex(int key, int n_buckets) const {
+  int hash_value = Hash(key);
+  if (hash_value >= 0) return hash_value % n_buckets;
+  return (-1 * hash_value) % n_buckets;
 }
 
-int HashMap::hash(int value) const {
+int HashMap::Hash(int value) const {
   std::hash<std::string> hasher;
   std::stringstream string;
   string << value;
   return (int) hasher(string.str());
 }
 
-void HashMap::resize() {
-  int newBuckets = numBuckets * 2;
-  LinkedList* newStore = new LinkedList[newBuckets];
-  
-  for (int bucketIdx = 0; bucketIdx < numBuckets; bucketIdx++) {
-    for (int index = 0; index < store[bucketIdx].count; index++) {
-      int value = store[bucketIdx][index];
-      int newIndex = bucket_index(value, newBuckets);
-      newStore[newIndex].push_back(value);
+void HashMap::Resize() {
+  int new_buckets = num_buckets_ * 2;
+  LinkedList* new_store = new LinkedList[new_buckets];
+
+  for (int bucket_idx = 0; bucket_idx < num_buckets_; bucket_idx++) {
+    for (int index = 0; index < store_[bucket_idx].count; index++) {
+      int value = store_[bucket_idx][index];
+      int new_index = BucketIndex(value, new_buckets);
+      new_store[new_index].push_back(value);
     }
   }
-  
-  delete[] store;
-  store = newStore;
-  numBuckets = newBuckets;
+
+  delete[] store_;
+  store_ = new_store;
+  num_buckets_ = new_buckets;
 }

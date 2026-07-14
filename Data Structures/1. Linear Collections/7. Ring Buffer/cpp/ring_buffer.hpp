@@ -1,36 +1,38 @@
+#pragma once
+
 #include <iostream>
 #include <stdexcept>
 
 class RingBuffer {
   // member variables
-  int start;
-  int count;
-  int capacity;
-  int* store;
-  
+  int start_;
+  int count_;
+  int capacity_;
+  int* store_;
+
 public:
   // constructor & destructor
   RingBuffer();
   ~RingBuffer();
-  
+
   // accessors
   int& operator[] (int index);
-  
+
   // basic operations
-  int pop();
-  int shift();
-  void push(int value);
-  void unshift(int value);
-  
+  int Pop();
+  int Shift();
+  void Push(int value);
+  void Unshift(int value);
+
   // debugger
-  void print() const;
-  
+  void Print() const;
+
 private:
   // internal member functions
-  void fill();
-  void resize();
-  int wrap(int index) const;
-  int intern(int index) const;
-  bool is_invalid(int index) const;
-  void check_index(int index) const;
+  void Fill();
+  void Resize();
+  int Wrap(int index) const;
+  int Intern(int index) const;
+  bool IsInvalid(int index) const;
+  void CheckIndex(int index) const;
 };

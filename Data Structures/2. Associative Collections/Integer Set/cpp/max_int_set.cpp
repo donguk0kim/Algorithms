@@ -1,54 +1,55 @@
-#include <iostream>
-#include <stdexcept>
 #include "max_int_set.hpp"
 
+#include <iostream>
+#include <stdexcept>
+
 /* constructor */
-MaxIntSet::MaxIntSet(int max) : capacity{max} {
-  store = new bool[capacity];
-  fill();
+MaxIntSet::MaxIntSet(int max) : capacity_{max} {
+  store_ = new bool[capacity_];
+  Fill();
 }
 
 /* public */
 // O(1)
-void MaxIntSet::insert(int value) {
-  check_index(value);
-  store[value] = true;
+void MaxIntSet::Insert(int value) {
+  CheckIndex(value);
+  store_[value] = true;
 }
 
 // O(1)
-void MaxIntSet::remove(int value) {
-  check_index(value);
-  store[value] = false;
+void MaxIntSet::Remove(int value) {
+  CheckIndex(value);
+  store_[value] = false;
 }
 
 // O(1)
-bool MaxIntSet::includes(int value) const {
-  check_index(value);
-  return !!store[value];
+bool MaxIntSet::Includes(int value) const {
+  CheckIndex(value);
+  return !!store_[value];
 }
 
-void MaxIntSet::print() const {
+void MaxIntSet::Print() const {
   std::cout << "{ ";
-  for (int index = 0; index < capacity; index++) {
-    std::cout << store[index];
-    if (index < capacity - 1) std::cout << ", ";
+  for (int index = 0; index < capacity_; index++) {
+    std::cout << store_[index];
+    if (index < capacity_ - 1) std::cout << ", ";
   }
   std::cout << " }\n" << std::endl;
 }
 
 /* private */
-void MaxIntSet::fill() {
-  for (int index = 0; index < capacity; index++) {
-    store[index] = false;
+void MaxIntSet::Fill() {
+  for (int index = 0; index < capacity_; index++) {
+    store_[index] = false;
   }
 }
 
-void MaxIntSet::check_index(int index) const {
-  if (is_invalid(index)) {
+void MaxIntSet::CheckIndex(int index) const {
+  if (IsInvalid(index)) {
     throw std::out_of_range("Index out of bounds");
   }
 }
 
-bool MaxIntSet::is_invalid(int index) const {
-  return (index < 0) || (index >= capacity);
+bool MaxIntSet::IsInvalid(int index) const {
+  return (index < 0) || (index >= capacity_);
 }
