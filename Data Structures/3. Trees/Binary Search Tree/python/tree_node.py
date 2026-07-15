@@ -6,11 +6,11 @@ class TreeNode:
     rite: TreeNode = None
 
     # O(1)
-    def __init__(self, value: int):
+    def __init__(self, value: int) -> TreeNode:
         self.value = value
 
     # log(n)
-    def insert_type_one(self, value: int) -> TreeNode:
+    def insert(self, value: int) -> TreeNode:
         if self == None: return TreeNode(value)
 
         if value < self.value:
@@ -19,29 +19,37 @@ class TreeNode:
             self.rite = self.rite.insert(value)
         
         return self
+
+    # log(n)
+    def remove(self, value: int) -> TreeNode:
+        if value < self.value:
+            self.left = self.left.remove(value)
+        elif value > self.value:
+            self.rite = self.rite.remove(value)
+        else:
+            if not self.left and not self.rite:
+                return None
+            elif not self.left:
+                return self.rite
+            elif not self.rite:
+                return self.left
+            else:
+                min = self.rite.findMin()
+                min.rite = self.rite.remove(min.value)
+                min.left = self.left
+                return min
+
+        return self
     
     # log(n)
-    def insert_type_two(self, value: int) -> TreeNode:
-        if value < self.value:
-            if self.left:
-                return self.left.insert(value)
-            else:
-                self.left = TreeNode(value)
-                return self.left
-        else:
-            if self.rite:
-                return self.rite.insert(value)
-            else:
-                self.rite = TreeNode(value)
-                return self.rite
+    def findMin(self) -> TreeNode:
+        node = self
+        while node.left:
+            node = node.left
+        return node
 
-    def remove(self, value: int):
-        if self == None: return
+        
 
-        if not self.left and not self.rite:
-            return None
-        elif not self.left:
-            
             
 
         

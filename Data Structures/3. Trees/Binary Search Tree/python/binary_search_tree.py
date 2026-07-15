@@ -9,12 +9,12 @@ class BinarySearchTree:
     root: TreeNode = None
 
     # O(1)
-    def __init__(self, root: TreeNode = None):
+    def __init__(self, root: TreeNode = None) -> BinarySearchTree:
         pass
 
     # log(n)
     def insert(self, value: int) -> TreeNode:
-        return self.root.insert_type_one(value)
+        return self.root.insert(value)
 
     # log(n)
     def remove(self, value: int):
@@ -23,5 +23,3 @@ class BinarySearchTree:
     # log(n)
     def find(self, value: int) -> TreeNode:
         return depth_first_search(self.root, value)
-
-
