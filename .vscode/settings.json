@@ -1,5 +1,9 @@
 {
     "files.exclude": {
         "**/build": true,
-    }
+    },
+    "python.analysis.extraPaths": [
+        "Data Structures/3. Trees/Binary Search Tree/python",
+        "Algorithms/3. Graph Traversal/Depth First Search/python"
+    ]
 }
