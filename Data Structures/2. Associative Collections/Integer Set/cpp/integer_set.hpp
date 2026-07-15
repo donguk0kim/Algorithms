@@ -14,18 +14,18 @@ public:
   IntegerSet();
 
   // basic operations
-  int Length() const;
-  void Insert(int val);
-  void Remove(int val);
-  bool Includes(int val) const;
+  int length() const;
+  void insert(int val);
+  void remove(int val);
+  bool includes(int val) const;
 
   // debugger
-  void Print() const;
+  void print() const;
 
 private:
   // internal member functions
-  void Fill();
-  void Resize();
-  int Hash(int val) const;
-  int BucketIndex(int val, int n_buckets) const;
+  void fill();
+  void resize();
+  int hash(int val) const;
+  int bucketIndex(int val, int n_buckets) const;
 };

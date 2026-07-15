@@ -13,16 +13,16 @@ public:
   ~BinarySearchTree();
 
   // basic operations
-  void Remove(int value);
-  TreeNode* Insert(int value);
-  bool Includes(int value) const;
-  TreeNode* Find(int value) const;
+  void remove(int value);
+  TreeNode* insert(int value);
+  bool includes(int value) const;
+  TreeNode* find(int value) const;
 
   // advanced operations
-  int Depth(TreeNode* node) const;
-  bool IsBalanced(TreeNode* node) const;
+  int depth(TreeNode* node) const;
+  bool isBalanced(TreeNode* node) const;
 
 private:
   // internal
-  std::vector<TreeNode*> GetTarget(int value) const;
+  std::vector<TreeNode*> getTarget(int value) const;
 };

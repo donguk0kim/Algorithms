@@ -10,16 +10,16 @@ public:
   MaxIntSet(int max);
 
   // basic operations
-  void Insert(int value);
-  void Remove(int value);
-  bool Includes(int value) const;
+  void insert(int value);
+  void remove(int value);
+  bool includes(int value) const;
 
   // debugger
-  void Print() const;
+  void print() const;
 
 private:
   // internal members
-  void Fill();
-  bool IsInvalid(int index) const;
-  void CheckIndex(int index) const;
+  void fill();
+  bool isInvalid(int index) const;
+  void checkIndex(int index) const;
 };

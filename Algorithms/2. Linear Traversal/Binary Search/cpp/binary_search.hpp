@@ -3,6 +3,6 @@
 #include <iostream>
 #include <vector>
 
-int BinarySearch(std::vector<int> array, int target);
+int binarySearch(std::vector<int> array, int target);
 
-void Print(std::vector<int> array);
+void print(std::vector<int> array);

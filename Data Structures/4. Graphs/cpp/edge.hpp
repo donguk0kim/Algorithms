@@ -16,9 +16,9 @@ public:
   Edge(Node* prev_node, Node* next_node, int weight = 1);
 
   // basic operations
-  void Destroy();
+  void destroy();
 
 private:
   // private members
-  void Connect();
+  void connect();
 };

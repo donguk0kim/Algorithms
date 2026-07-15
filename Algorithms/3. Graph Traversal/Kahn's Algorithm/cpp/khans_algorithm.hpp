@@ -4,6 +4,6 @@
 
 #include "node.hpp"
 
-std::vector<Node*> Kahn(std::vector<Node*>& nodes);
+std::vector<Node*> kahn(std::vector<Node*>& nodes);
 
-void Vprint(std::vector<Node*>& array);
+void vprint(std::vector<Node*>& array);

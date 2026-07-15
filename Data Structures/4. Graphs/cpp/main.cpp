@@ -4,17 +4,17 @@
 #include <iostream>
 
 // debugger
-void Print(int value) {
+void print(int value) {
   std::cout << value << std::endl;
 }
 
 // debugger
-void Sprint(const char* string) {
+void sprint(const char* string) {
   std::cout << string << std::endl;
 }
 
 // debugger
-void Lprint(std::list<Edge*> list) {
+void lprint(std::list<Edge*> list) {
   int k = 0;
   std::cout << "{ ";
   for (std::list<Edge*>::iterator it = list.begin(); it != list.end(); it++) {
@@ -29,7 +29,7 @@ void Lprint(std::list<Edge*> list) {
 int main() {
 
   // test case 1 - connection
-  Sprint("test case 1 - connection");
+  sprint("test case 1 - connection");
   Node node1{1};
   Node node2{2};
   Node node3{3};
@@ -39,19 +39,19 @@ int main() {
   Edge edge3_2{&node3, &node2};
   Edge edge2_3{&node2, &node3};
 
-  Lprint(node1.next_edges_);
-  Lprint(node2.next_edges_);
-  Lprint(node3.next_edges_);
-  Sprint("");
+  lprint(node1.next_edges_);
+  lprint(node2.next_edges_);
+  lprint(node3.next_edges_);
+  sprint("");
 
 
   // test case 2 - destruction
-  Sprint("test case 2 - destruction");
-  edge1_2.Destroy();
-  edge3_2.Destroy();
-  Lprint(node1.next_edges_);
-  Lprint(node2.next_edges_);
-  Lprint(node3.next_edges_);
+  sprint("test case 2 - destruction");
+  edge1_2.destroy();
+  edge3_2.destroy();
+  lprint(node1.next_edges_);
+  lprint(node2.next_edges_);
+  lprint(node3.next_edges_);
 
   return 0;
 }

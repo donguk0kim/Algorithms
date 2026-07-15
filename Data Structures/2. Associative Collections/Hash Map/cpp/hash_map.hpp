@@ -13,20 +13,20 @@ public:
   HashMap();
 
   // accessors
-  int Get(int key) const;
-  void Set(int key, int val);
+  int get(int key) const;
+  void set(int key, int val);
 
   // basic operations
-  void Remove(int key);
-  bool Includes(int key) const;
+  void remove(int key);
+  bool includes(int key) const;
 
   // debugger
-  void Print() const;
+  void print() const;
 
 private:
   // private members
-  void Resize();
-  void Insert(int value);
-  int Hash(int value) const;
-  int BucketIndex(int key, int n_buckets) const;
+  void resize();
+  void insert(int value);
+  int hash(int value) const;
+  int bucketIndex(int key, int n_buckets) const;
 };

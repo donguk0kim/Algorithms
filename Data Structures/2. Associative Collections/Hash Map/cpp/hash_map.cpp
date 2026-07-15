@@ -13,35 +13,35 @@ HashMap::HashMap():
 }
 
 /* accessors */
-int HashMap::Get(int key) const {
-  int internal = BucketIndex(key, num_buckets_);
+int HashMap::get(int key) const {
+  int internal = bucketIndex(key, num_buckets_);
   std::list<int>* bucket = &store_[internal];
   Node* node = **std::find(bucket->begin(), bucket->end(), key);
   return node->val;
 }
 
-void HashMap::Set(int key, int val) {
-  if (count_ == num_buckets_) Resize();
-  int internal = BucketIndex(key, num_buckets_);
+void HashMap::set(int key, int val) {
+  if (count_ == num_buckets_) resize();
+  int internal = bucketIndex(key, num_buckets_);
   std::list<int>* bucket = &store_[internal];
   bucket->push(key, val);
 }
 
 /* basic operations */
-void HashMap::Remove(int key) {
-  int internal = BucketIndex(key, num_buckets_);
+void HashMap::remove(int key) {
+  int internal = bucketIndex(key, num_buckets_);
   std::list<int>* bucket = &store_[internal];
   bucket->remove(key);
 }
 
-bool HashMap::Includes(int key) const {
-  int internal = BucketIndex(key, num_buckets_);
+bool HashMap::includes(int key) const {
+  int internal = bucketIndex(key, num_buckets_);
   std::list<int>* bucket = &store_[internal];
   return bucket->includes(key);
 }
 
 /* debugger */
-void HashMap::Print() const {
+void HashMap::print() const {
   std::cout << "\n{\n";
   for (int index_row = 0; index_row < num_buckets_; index_row++) {
     store_[index_row].print();
@@ -50,27 +50,27 @@ void HashMap::Print() const {
 }
 
 /* private */
-int HashMap::BucketIndex(int key, int n_buckets) const {
-  int hash_value = Hash(key);
+int HashMap::bucketIndex(int key, int n_buckets) const {
+  int hash_value = hash(key);
   if (hash_value >= 0) return hash_value % n_buckets;
   return (-1 * hash_value) % n_buckets;
 }
 
-int HashMap::Hash(int value) const {
+int HashMap::hash(int value) const {
   std::hash<std::string> hasher;
   std::stringstream string;
   string << value;
   return (int) hasher(string.str());
 }
 
-void HashMap::Resize() {
+void HashMap::resize() {
   int new_buckets = num_buckets_ * 2;
   LinkedList* new_store = new LinkedList[new_buckets];
 
   for (int bucket_idx = 0; bucket_idx < num_buckets_; bucket_idx++) {
     for (int index = 0; index < store_[bucket_idx].count; index++) {
       int value = store_[bucket_idx][index];
-      int new_index = BucketIndex(value, new_buckets);
+      int new_index = bucketIndex(value, new_buckets);
       new_store[new_index].push_back(value);
     }
   }

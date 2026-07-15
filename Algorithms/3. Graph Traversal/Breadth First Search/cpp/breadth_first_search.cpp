@@ -1,6 +1,6 @@
 #include "breadth_first_search.hpp"
 
-inline std::vector<TreeNode*> Bfs(TreeNode* root) {
+inline std::vector<TreeNode*> bfs(TreeNode* root) {
   TreeNode* node;
   std::vector<TreeNode*> children;
   std::vector<TreeNode*> queue { root };
@@ -9,7 +9,7 @@ inline std::vector<TreeNode*> Bfs(TreeNode* root) {
   while (!queue.empty()) {
     node = queue[0];
     queue.erase(queue.begin());
-    children = node->Children();
+    children = node->children();
 
     for (int index = 0; index < children.size(); index++) {
       queue.push_back(children[index]);

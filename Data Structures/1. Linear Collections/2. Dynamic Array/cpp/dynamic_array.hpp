@@ -15,18 +15,18 @@ public:
   int& operator[] (int index);
 
   // basic operations
-  int Pop();
-  int Shift();
-  void Push(int val);
-  void Unshift(int val);
+  int pop();
+  int shift();
+  void push(int val);
+  void unshift(int val);
 
   // debugger
-  void Print();
+  void print();
 
 private:
   // internal members
-  void Fill();
-  void Resize();
-  bool IsInvalid(int index);
-  void CheckIndex(int index);
+  void fill();
+  void resize();
+  bool isInvalid(int index);
+  void checkIndex(int index);
 };

@@ -1,7 +1,7 @@
 #include "quicksort.hpp"
 
 // nlog(n) but worst case n^2
-std::vector<int> Quicksort(std::vector<int> array) {
+std::vector<int> quicksort(std::vector<int> array) {
   int length = (int) array.size();
   if (length <= 1) return array;
 
@@ -24,22 +24,22 @@ std::vector<int> Quicksort(std::vector<int> array) {
     }
   }
 
-  left = Quicksort(left);
-  rite = Quicksort(rite);
+  left = quicksort(left);
+  rite = quicksort(rite);
   left.insert(left.end(), pivs.begin(), pivs.end());
   left.insert(left.end(), rite.begin(), rite.end());
   return left;
 }
 
 // nlog(n) but worst case n^2
-void QuicksortInplace(std::vector<int>& array, int start, int end) {
+void quicksortInplace(std::vector<int>& array, int start, int end) {
   if (end <= start) return;
-  int wall = Partition(array, start, end);
-  QuicksortInplace(array, start, wall - 1);
-  QuicksortInplace(array, wall + 1, end);
+  int wall = partition(array, start, end);
+  quicksortInplace(array, start, wall - 1);
+  quicksortInplace(array, wall + 1, end);
 }
 
-int Partition(std::vector<int>& array, int start, int end) {
+int partition(std::vector<int>& array, int start, int end) {
   int wall = start;
   int pivot = array[start];
 
@@ -59,7 +59,7 @@ int Partition(std::vector<int>& array, int start, int end) {
 }
 
 // debugger
-void Print(std::vector<int> array) {
+void print(std::vector<int> array) {
   std::cout << "{ ";
   for (int index = 0; index < array.size(); index++) {
     std::cout << array[index];

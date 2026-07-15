@@ -14,8 +14,8 @@ public:
     int& operator[](int index);
 
     // basic operations
-    int Length() const;
-    void Push(int value);
-    void Remove(int value);
-    bool Includes(int value) const;
+    int length() const;
+    void push(int value);
+    void remove(int value);
+    bool includes(int value) const;
 };

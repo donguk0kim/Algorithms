@@ -19,20 +19,20 @@ public:
   int& operator[] (int index);
 
   // basic operations
-  int Pop();
-  int Shift();
-  void Push(int value);
-  void Unshift(int value);
+  int pop();
+  int shift();
+  void push(int value);
+  void unshift(int value);
 
   // debugger
-  void Print() const;
+  void print() const;
 
 private:
   // internal member functions
-  void Fill();
-  void Resize();
-  int Wrap(int index) const;
-  int Intern(int index) const;
-  bool IsInvalid(int index) const;
-  void CheckIndex(int index) const;
+  void fill();
+  void resize();
+  int wrap(int index) const;
+  int intern(int index) const;
+  bool isInvalid(int index) const;
+  void checkIndex(int index) const;
 };

@@ -4,25 +4,25 @@
 
 int main() {
 
-  // test case BinaryMaxHeap::Insert
+  // test case BinaryMaxHeap::insert
   BinaryMaxHeap bmh;
   std::vector<int> array { 0, 1, 2, 3, 4, 5 };
-  for (int k = 0; k < array.size(); k++) bmh.Insert(array[k]);
+  for (int k = 0; k < array.size(); k++) bmh.insert(array[k]);
 
-  // test case BinaryMaxHeap::Extract
-  BinaryMaxHeap::Print(bmh.store_);
-  bmh.Extract();
-  BinaryMaxHeap::Print(bmh.store_);
-  bmh.Extract();
-  BinaryMaxHeap::Print(bmh.store_);
+  // test case BinaryMaxHeap::extract
+  BinaryMaxHeap::print(bmh.store_);
+  bmh.extract();
+  BinaryMaxHeap::print(bmh.store_);
+  bmh.extract();
+  BinaryMaxHeap::print(bmh.store_);
 
-  // test case Heapsort
-  std::vector<int> result = Heapsort(array);
-  BinaryMaxHeap::Print(result);
+  // test case heapsort
+  std::vector<int> result = heapsort(array);
+  BinaryMaxHeap::print(result);
 
-  // test case Heapsort inplace
-  HeapsortInplace(array);
-  BinaryMaxHeap::Print(array);
+  // test case heapsort inplace
+  heapsortInplace(array);
+  BinaryMaxHeap::print(array);
 
   return 0;
 }

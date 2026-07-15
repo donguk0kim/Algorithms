@@ -3,10 +3,10 @@
 #include <iostream>
 #include <vector>
 
-void Print(int value);
+void print(int value);
 
-void Sprint(const char* string);
+void sprint(const char* string);
 
-void Vprint(std::vector<int> array);
+void vprint(std::vector<int> array);
 
-void Vvprint(std::vector<std::vector<int>> array);
+void vvprint(std::vector<std::vector<int>> array);

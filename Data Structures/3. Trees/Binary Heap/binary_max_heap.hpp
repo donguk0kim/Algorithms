@@ -15,20 +15,20 @@ public:
   ~BinaryMaxHeap();
 
   // basic operations
-  int Max();
-  int Count();
-  int Extract();
-  void Insert(int value);
+  int max();
+  int count();
+  int extract();
+  void insert(int value);
 
   // helper methods
-  static int ParentIndex(int child_index);
-  static std::vector<int> ChildIndices(int parent_index, int count);
-  static int IndexOfMax(std::vector<int>& array, std::vector<int>& indices);
+  static int parentIndex(int child_index);
+  static std::vector<int> childIndices(int parent_index, int count);
+  static int indexOfMax(std::vector<int>& array, std::vector<int>& indices);
 
   // advanced operations
-  static void HeapifyUp(std::vector<int>& array, int child_index);
-  static void HeapifyDown(std::vector<int>& array, int parent_index, int count);
+  static void heapifyUp(std::vector<int>& array, int child_index);
+  static void heapifyDown(std::vector<int>& array, int parent_index, int count);
 
   // debugger
-  static void Print(std::vector<int>& array);
+  static void print(std::vector<int>& array);
 };

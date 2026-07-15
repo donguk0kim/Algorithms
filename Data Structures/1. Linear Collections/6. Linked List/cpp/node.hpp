@@ -13,5 +13,5 @@ public:
   Node(int key = 0, int val = 0);
 
   // basic operations
-  void Destroy();
+  void destroy();
 };

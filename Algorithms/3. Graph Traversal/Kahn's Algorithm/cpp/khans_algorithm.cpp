@@ -9,7 +9,7 @@
 
 
 // Kahn's Algorithm - Topological Sorting
-std::vector<Node*> Kahn(std::vector<Node*>& nodes) {
+std::vector<Node*> kahn(std::vector<Node*>& nodes) {
   std::queue<Node*> queue;
   std::vector<Node*> result;
   std::map<Node*, int> num_edges;
@@ -28,7 +28,7 @@ std::vector<Node*> Kahn(std::vector<Node*>& nodes) {
     Node* node = queue.front();
     queue.pop();
     result.push_back(node);
-    Vprint(result);
+    vprint(result);
 
     std::list<Edge*>::iterator iter;
     std::list<Edge*> edges = node->next_edges_;
@@ -49,7 +49,7 @@ std::vector<Node*> Kahn(std::vector<Node*>& nodes) {
 
 
 // debugger
-void Vprint(std::vector<Node*>& array) {
+void vprint(std::vector<Node*>& array) {
   std::cout << "{ ";
   for (int index = 0; index < array.size(); index++) {
     std::cout << array[index]->value_;

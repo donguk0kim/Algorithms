@@ -6,42 +6,42 @@
 int main() {
 
   // test case - Fibonacci Top Down
-  Sprint("test case - Fibonacci Top Down");
+  sprint("test case - Fibonacci Top Down");
   Fibonacci fibonacci1;
-  Print(fibonacci1.TopDown(1));
-  Print(fibonacci1.TopDown(2));
-  Print(fibonacci1.TopDown(3));
-  Print(fibonacci1.TopDown(4));
-  Print(fibonacci1.TopDown(5));
-  Sprint("");
+  print(fibonacci1.topDown(1));
+  print(fibonacci1.topDown(2));
+  print(fibonacci1.topDown(3));
+  print(fibonacci1.topDown(4));
+  print(fibonacci1.topDown(5));
+  sprint("");
 
   // test case - Fibonacci Bottom Up
-  Sprint("test case - Fibonacci Bottom Up");
+  sprint("test case - Fibonacci Bottom Up");
   Fibonacci fibonacci2;
-  Print(fibonacci2.BottomUp(1));
-  Print(fibonacci2.BottomUp(2));
-  Print(fibonacci2.BottomUp(3));
-  Print(fibonacci2.BottomUp(4));
-  Print(fibonacci2.BottomUp(5));
-  Sprint("");
+  print(fibonacci2.bottomUp(1));
+  print(fibonacci2.bottomUp(2));
+  print(fibonacci2.bottomUp(3));
+  print(fibonacci2.bottomUp(4));
+  print(fibonacci2.bottomUp(5));
+  sprint("");
 
   // test case - Frog Top Down
-  Sprint("test case - Frog Top Down");
+  sprint("test case - Frog Top Down");
   Frog frog1;
-  Vvprint(frog1.TopDown(1));
-  Vvprint(frog1.TopDown(2));
-  Vvprint(frog1.TopDown(3));
-  Vvprint(frog1.TopDown(4));
-  Sprint("");
+  vvprint(frog1.topDown(1));
+  vvprint(frog1.topDown(2));
+  vvprint(frog1.topDown(3));
+  vvprint(frog1.topDown(4));
+  sprint("");
 
   // test case - Frog Bottom Up
-  Sprint("test case - Frog Bottom Up");
+  sprint("test case - Frog Bottom Up");
   Frog frog2;
-  Vvprint(frog2.BottomUp(1));
-  Vvprint(frog2.BottomUp(2));
-  Vvprint(frog2.BottomUp(3));
-  Vvprint(frog2.BottomUp(4));
-  Sprint("");
+  vvprint(frog2.bottomUp(1));
+  vvprint(frog2.bottomUp(2));
+  vvprint(frog2.bottomUp(3));
+  vvprint(frog2.bottomUp(4));
+  sprint("");
 
   return 0;
 }

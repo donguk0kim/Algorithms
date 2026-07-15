@@ -17,8 +17,8 @@ int main() {
   Edge edge45 {&node4, &node5};
 
   std::vector<Node*> nodes {&node5, &node3, &node1, &node2, &node4};
-  std::vector<Node*> result {Kahn(nodes)};
-  Vprint(result);
+  std::vector<Node*> result {kahn(nodes)};
+  vprint(result);
 
   return 0;
 }

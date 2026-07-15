@@ -3,7 +3,7 @@
 #include "edge.hpp"
 
 // Tarjan's Algorithm - Topological Sorting
-std::list<Node*> Tarjan(std::vector<Node*>& nodes) {
+std::list<Node*> tarjan(std::vector<Node*>& nodes) {
   std::list<Node*> result;
   std::unordered_set<Node*> stack;
   std::unordered_set<Node*> visited;
@@ -12,7 +12,7 @@ std::list<Node*> Tarjan(std::vector<Node*>& nodes) {
     Node* node = nodes[k];
 
     if (visited.find(node) == visited.end()) {
-      bool is_cyclic = Visit(node, stack, visited, result);
+      bool is_cyclic = visit(node, stack, visited, result);
       if (is_cyclic) result.clear(); return result;
     }
   }
@@ -20,7 +20,7 @@ std::list<Node*> Tarjan(std::vector<Node*>& nodes) {
   return result;
 }
 
-bool Visit(Node* node,
+bool visit(Node* node,
            std::unordered_set<Node*>& stack,
            std::unordered_set<Node*>& visited,
            std::list<Node*>& result) {
@@ -34,7 +34,7 @@ bool Visit(Node* node,
     Node* next = edge->next_node_;
     if (stack.find(next) != stack.end()) return true;
     if (visited.find(next) == visited.end()) {
-      bool is_cyclic = Visit(next, stack, visited, result);
+      bool is_cyclic = visit(next, stack, visited, result);
       if (is_cyclic) return true;
     }
   }
@@ -46,7 +46,7 @@ bool Visit(Node* node,
 
 
 // debugger
-void Lprint(std::list<Node*>& list) {
+void lprint(std::list<Node*>& list) {
   int index = 0;
   std::cout << "{ ";
   std::list<Node*>::const_iterator iter;

@@ -16,16 +16,16 @@ public:
   ~TreeNode();
 
   // basic operations
-  TreeNode* Max();
-  bool Unbound() const;
-  void Append(TreeNode* node);
-  std::vector<TreeNode*> Children() const;
+  TreeNode* max();
+  bool unbound() const;
+  void append(TreeNode* node);
+  std::vector<TreeNode*> children() const;
 
   // traversal
-  std::vector<TreeNode*> Bfs();
-  void Dfs(std::vector<TreeNode*>& order);
+  std::vector<TreeNode*> bfs();
+  void dfs(std::vector<TreeNode*>& order);
 
   // debugger
-  void PrintBfs();
-  void PrintDfs();
+  void printBfs();
+  void printDfs();
 };

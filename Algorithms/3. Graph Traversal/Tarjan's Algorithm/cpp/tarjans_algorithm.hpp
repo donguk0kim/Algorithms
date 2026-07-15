@@ -7,12 +7,12 @@
 
 #include "node.hpp"
 
-std::list<Node*> Tarjan(std::vector<Node*>& nodes);
+std::list<Node*> tarjan(std::vector<Node*>& nodes);
 
-bool Visit(Node* node,
+bool visit(Node* node,
            std::unordered_set<Node*>& stack,
            std::unordered_set<Node*>& visited,
            std::list<Node*>& result
            );
 
-void Lprint(std::list<Node*>& list);
+void lprint(std::list<Node*>& list);

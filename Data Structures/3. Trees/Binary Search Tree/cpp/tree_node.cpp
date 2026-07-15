@@ -13,7 +13,7 @@ TreeNode::~TreeNode() {
 }
 
 /* basic operations */
-TreeNode* TreeNode::Max() {
+TreeNode* TreeNode::max() {
   TreeNode* node = this;
   while (node->rite_) {
     node = node->rite_;
@@ -21,22 +21,22 @@ TreeNode* TreeNode::Max() {
   return node;
 }
 
-bool TreeNode::Unbound() const {
+bool TreeNode::unbound() const {
   return (left_ == nullptr) && (rite_ == nullptr);
 }
 
-void TreeNode::Append(TreeNode* node) {
+void TreeNode::append(TreeNode* node) {
   if (node->value_ <= value_) {
-    if (left_) left_->Append(node);
+    if (left_) left_->append(node);
     if (left_ == nullptr) left_ = node;
 
   } else {
-    if (rite_) rite_->Append(node);
+    if (rite_) rite_->append(node);
     if (rite_ == nullptr) rite_ = node;
   }
 }
 
-std::vector<TreeNode*> TreeNode::Children() const {
+std::vector<TreeNode*> TreeNode::children() const {
   std::vector<TreeNode*> children;
   if (left_) children.push_back(left_);
   if (rite_) children.push_back(rite_);
@@ -44,7 +44,7 @@ std::vector<TreeNode*> TreeNode::Children() const {
 }
 
 /* traversal */
-std::vector<TreeNode*> TreeNode::Bfs() {
+std::vector<TreeNode*> TreeNode::bfs() {
   TreeNode* node;
   std::vector<TreeNode*> children;
   std::vector<TreeNode*> queue { this };
@@ -53,7 +53,7 @@ std::vector<TreeNode*> TreeNode::Bfs() {
   while (!queue.empty()) {
     node = queue[0];
     queue.erase(queue.begin());
-    children = node->Children();
+    children = node->children();
 
     for (int index = 0; index < children.size(); index++) {
       queue.push_back(children[index]);
@@ -64,19 +64,19 @@ std::vector<TreeNode*> TreeNode::Bfs() {
   return order;
 }
 
-void TreeNode::Dfs(std::vector<TreeNode*>& order) {
+void TreeNode::dfs(std::vector<TreeNode*>& order) {
   TreeNode* child;
   order.push_back(this);
-  std::vector<TreeNode*> children = Children();
+  std::vector<TreeNode*> children = this->children();
   for (int index = 0; index < children.size(); index++) {
     child = children[index];
-    child->Dfs(order);
+    child->dfs(order);
   }
 }
 
 /* debugger */
-void TreeNode::PrintBfs() {
-  std::vector<TreeNode*> order = Bfs();
+void TreeNode::printBfs() {
+  std::vector<TreeNode*> order = bfs();
 
   std::cout << "{ ";
   for (int index = 0; index < order.size(); index++) {
@@ -86,10 +86,10 @@ void TreeNode::PrintBfs() {
   std::cout << " }" << std::endl;
 }
 
-void TreeNode::PrintDfs() {
+void TreeNode::printDfs() {
 
   std::vector<TreeNode*> order;
-  Dfs(order);
+  dfs(order);
 
   std::cout << "{ ";
   for (int index = 0; index < order.size(); index++) {

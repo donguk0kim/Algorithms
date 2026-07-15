@@ -11,43 +11,43 @@ LinkedList::LinkedList() : count_{0} {
 }
 
 LinkedList::~LinkedList() {
-  while (!IsEmpty()) {
-    Last()->Destroy();
+  while (!isEmpty()) {
+    last()->destroy();
   }
 }
 
 /* public */
 
 // O(1)
-Node* LinkedList::First() const {
+Node* LinkedList::first() const {
   return head_->next_;
 }
 
 // O(1)
-Node* LinkedList::Last() const {
+Node* LinkedList::last() const {
   return tail_->prev_;
 }
 
 // O(1)
-void LinkedList::Push(int key, int val) {
+void LinkedList::push(int key, int val) {
   Node* node = new Node(key, val);
   node->next_ = tail_;
-  node->prev_ = Last();
-  Last()->next_ = node;
+  node->prev_ = last();
+  last()->next_ = node;
   tail_->prev_ = node;
   count_++;
 }
 
 // O(n)
-void LinkedList::Remove(int key) {
-  Node* node = Find(key);
-  node->Destroy();
+void LinkedList::remove(int key) {
+  Node* node = find(key);
+  node->destroy();
   count_--;
 }
 
 // O(n)
-Node* LinkedList::Find(int key) const {
-  Node* node = First();
+Node* LinkedList::find(int key) const {
+  Node* node = first();
   while (node != tail_) {
     if (node->key_ == key) return node;
     node = node->next_;
@@ -56,8 +56,8 @@ Node* LinkedList::Find(int key) const {
 }
 
 // O(n)
-bool LinkedList::Includes(int key) const {
-  Node* node = First();
+bool LinkedList::includes(int key) const {
+  Node* node = first();
   while (node != tail_) {
     if (node->key_ == key) {
       return true;
@@ -67,14 +67,14 @@ bool LinkedList::Includes(int key) const {
   return false;
 }
 
-bool LinkedList::IsEmpty() const {
-  return First() == tail_;
+bool LinkedList::isEmpty() const {
+  return first() == tail_;
 }
 
 // debugger
-void LinkedList::Print() const {
+void LinkedList::print() const {
   int iter = 1;
-  Node* node = First();
+  Node* node = first();
   std::cout << "{ ";
   while (node != tail_) {
     if (iter < count_) std::cout << "[" << node->key_ << "," << node->val_ << "], ";

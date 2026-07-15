@@ -6,29 +6,29 @@
 /* constructor */
 MaxIntSet::MaxIntSet(int max) : capacity_{max} {
   store_ = new bool[capacity_];
-  Fill();
+  fill();
 }
 
 /* public */
 // O(1)
-void MaxIntSet::Insert(int value) {
-  CheckIndex(value);
+void MaxIntSet::insert(int value) {
+  checkIndex(value);
   store_[value] = true;
 }
 
 // O(1)
-void MaxIntSet::Remove(int value) {
-  CheckIndex(value);
+void MaxIntSet::remove(int value) {
+  checkIndex(value);
   store_[value] = false;
 }
 
 // O(1)
-bool MaxIntSet::Includes(int value) const {
-  CheckIndex(value);
+bool MaxIntSet::includes(int value) const {
+  checkIndex(value);
   return !!store_[value];
 }
 
-void MaxIntSet::Print() const {
+void MaxIntSet::print() const {
   std::cout << "{ ";
   for (int index = 0; index < capacity_; index++) {
     std::cout << store_[index];
@@ -38,18 +38,18 @@ void MaxIntSet::Print() const {
 }
 
 /* private */
-void MaxIntSet::Fill() {
+void MaxIntSet::fill() {
   for (int index = 0; index < capacity_; index++) {
     store_[index] = false;
   }
 }
 
-void MaxIntSet::CheckIndex(int index) const {
-  if (IsInvalid(index)) {
+void MaxIntSet::checkIndex(int index) const {
+  if (isInvalid(index)) {
     throw std::out_of_range("Index out of bounds");
   }
 }
 
-bool MaxIntSet::IsInvalid(int index) const {
+bool MaxIntSet::isInvalid(int index) const {
   return (index < 0) || (index >= capacity_);
 }

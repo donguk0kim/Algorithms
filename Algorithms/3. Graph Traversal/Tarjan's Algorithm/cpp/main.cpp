@@ -18,8 +18,8 @@ int main() {
   Edge edge45 {&node4, &node5};
 
   std::vector<Node*> nodes { &node2, &node5, &node1, &node4, &node3 };
-  std::list<Node*> result1 {Tarjan(nodes)};
-  Lprint(result1);
+  std::list<Node*> result1 {tarjan(nodes)};
+  lprint(result1);
 
   // test case - graph with a cycle
   Node vertex1{1};
@@ -35,8 +35,8 @@ int main() {
   Edge line45 {&vertex4, &vertex5};
 
   std::vector<Node*> vertices { &vertex2, &vertex5, &vertex1, &vertex4, &vertex3 };
-  std::list<Node*> result2 {Tarjan(nodes)};
-  Lprint(result2);
+  std::list<Node*> result2 {tarjan(nodes)};
+  lprint(result2);
 
   return 0;
 }

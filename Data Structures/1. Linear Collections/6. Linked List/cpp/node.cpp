@@ -9,7 +9,7 @@ Node::Node(int key, int val) :
 }
 
 /* basic operations */
-void Node::Destroy() {
+void Node::destroy() {
   next_->prev_ = prev_;
   prev_->next_ = next_;
   next_ = nullptr;

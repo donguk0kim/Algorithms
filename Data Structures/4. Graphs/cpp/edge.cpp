@@ -7,11 +7,11 @@ Edge::Edge(Node* prev_node, Node* next_node, int weight) :
 prev_node_{prev_node},
 next_node_{next_node},
 weight_{weight} {
-  Connect();
+  connect();
 }
 
 // basic operations
-void Edge::Destroy() {
+void Edge::destroy() {
   prev_node_->next_edges_.remove(this);
   next_node_->prev_edges_.remove(this);
   prev_node_ = nullptr;
@@ -19,7 +19,7 @@ void Edge::Destroy() {
 }
 
 // private members
-void Edge::Connect() {
+void Edge::connect() {
   prev_node_->next_edges_.push_back(this);
   next_node_->prev_edges_.push_back(this);
 }

@@ -7,6 +7,6 @@ class Fibonacci {
 
 public:
   Fibonacci();
-  int TopDown(int nth);
-  int BottomUp(int nth);
+  int topDown(int nth);
+  int bottomUp(int nth);
 };

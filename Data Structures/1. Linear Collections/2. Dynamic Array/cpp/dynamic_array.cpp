@@ -6,7 +6,7 @@
 /* Constructor & Destructor */
 DynamicArray::DynamicArray() : count_{0}, capacity_{5} {
   store_ = new int[capacity_];
-  Fill();
+  fill();
 }
 
 DynamicArray::~DynamicArray() {
@@ -17,28 +17,28 @@ DynamicArray::~DynamicArray() {
 
 // O(1)
 int& DynamicArray::operator[] (int index) {
-  CheckIndex(index);
+  checkIndex(index);
   return store_[index];
 }
 
 // O(1)
-void DynamicArray::Push(int val) {
-  if (count_ == capacity_) Resize();
+void DynamicArray::push(int val) {
+  if (count_ == capacity_) resize();
   (*this)[count_] = val;
   count_++;
 }
 
 // O(1)
-int DynamicArray::Pop() {
-  CheckIndex(count_ - 1);
+int DynamicArray::pop() {
+  checkIndex(count_ - 1);
   count_--;
   (*this)[count_] = NULL;
   return store_[count_];
 }
 
 // O(n)
-void DynamicArray::Unshift(int val) {
-  if (count_ == capacity_) Resize();
+void DynamicArray::unshift(int val) {
+  if (count_ == capacity_) resize();
   for (int index = count_ - 1; index >= 0; index--) {
     (*this)[index + 1] = (*this)[index];
   }
@@ -47,8 +47,8 @@ void DynamicArray::Unshift(int val) {
 }
 
 // O(n)
-int DynamicArray::Shift() {
-  CheckIndex(0);
+int DynamicArray::shift() {
+  checkIndex(0);
   int first = (*this)[0];
   for (int index = 1; index < count_; index++) {
     (*this)[index - 1] = (*this)[index];
@@ -58,7 +58,7 @@ int DynamicArray::Shift() {
   return first;
 }
 
-void DynamicArray::Print() {
+void DynamicArray::print() {
   std::cout << "{ ";
   for (int index = 0; index < capacity_; index++) {
     std::cout << store_[index];
@@ -68,17 +68,17 @@ void DynamicArray::Print() {
 }
 
 /* Private */
-void DynamicArray::CheckIndex(int index) {
-  if (IsInvalid(index)) {
+void DynamicArray::checkIndex(int index) {
+  if (isInvalid(index)) {
     throw std::out_of_range("Index out of bounds");
   }
 }
 
-bool DynamicArray::IsInvalid(int index) {
+bool DynamicArray::isInvalid(int index) {
   return index < 0;
 }
 
-void DynamicArray::Resize() {
+void DynamicArray::resize() {
   int new_capacity = capacity_ * 2;
   int* new_store = new int[capacity_];
 
@@ -89,10 +89,10 @@ void DynamicArray::Resize() {
   delete[] store_;
   store_ = new_store;
   capacity_ = new_capacity;
-  Fill();
+  fill();
 }
 
-void DynamicArray::Fill() {
+void DynamicArray::fill() {
   for (int index = count_; index < capacity_; index++) {
     (*this)[index] = NULL;
   }

@@ -6,7 +6,7 @@ RingBuffer::RingBuffer() {
   count_ = 0;
   capacity_ = 5;
   store_ = new int[capacity_];
-  Fill();
+  fill();
 }
 
 RingBuffer::~RingBuffer() {
@@ -16,29 +16,29 @@ RingBuffer::~RingBuffer() {
 /* accessors */
 // O(1)
 int& RingBuffer::operator[] (int index) {
-  int internal = Intern(index);
-  CheckIndex(internal);
+  int internal = intern(index);
+  checkIndex(internal);
   return store_[internal];
 }
 
 /* basic operations */
 // O(1) ammortized
-void RingBuffer::Push(int value) {
-  if (count_ == capacity_) Resize();
+void RingBuffer::push(int value) {
+  if (count_ == capacity_) resize();
   (*this)[count_] = value;
   count_++;
 }
 
 // O(1) ammortized
-void RingBuffer::Unshift(int value) {
-  if (count_ == capacity_) Resize();
+void RingBuffer::unshift(int value) {
+  if (count_ == capacity_) resize();
   (*this)[capacity_ - 1] = value;
   start_--;
   count_++;
 }
 
 // O(1)
-int RingBuffer::Pop() {
+int RingBuffer::pop() {
   int value = (*this)[count_ - 1];
   (*this)[count_ - 1] = NULL;
   count_--;
@@ -46,7 +46,7 @@ int RingBuffer::Pop() {
 }
 
 // O(1)
-int RingBuffer::Shift() {
+int RingBuffer::shift() {
   int value = (*this)[0];
   (*this)[0] = NULL;
   start_++;
@@ -55,7 +55,7 @@ int RingBuffer::Shift() {
 }
 
 /* debugger */
-void RingBuffer::Print() const {
+void RingBuffer::print() const {
   std::cout << "{ ";
   for (int index = 0; index < capacity_; index++) {
     std::cout << store_[index];
@@ -65,34 +65,34 @@ void RingBuffer::Print() const {
 }
 
 /* private */
-int RingBuffer::Intern(int index) const {
-  return Wrap(index + start_) % capacity_;
+int RingBuffer::intern(int index) const {
+  return wrap(index + start_) % capacity_;
 }
 
-int RingBuffer::Wrap(int index) const {
+int RingBuffer::wrap(int index) const {
   while (index < 0) {
     index += capacity_;
   }
   return index;
 }
 
-void RingBuffer::CheckIndex(int index) const {
-  if (IsInvalid(index)) {
+void RingBuffer::checkIndex(int index) const {
+  if (isInvalid(index)) {
     throw std::out_of_range("Index out of bounds");
   }
 }
 
-bool RingBuffer::IsInvalid(int index) const {
+bool RingBuffer::isInvalid(int index) const {
   return index > capacity_;
 }
 
-void RingBuffer::Fill() {
+void RingBuffer::fill() {
   for (int index = 0; index < capacity_; index++) {
     store_[index] = NULL;
   }
 }
 
-void RingBuffer::Resize() {
+void RingBuffer::resize() {
   int new_capacity = capacity_ * 2;
   int* new_store = new int[new_capacity];
 

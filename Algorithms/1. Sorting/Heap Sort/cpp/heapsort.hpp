@@ -3,6 +3,6 @@
 #include <iostream>
 #include <vector>
 
-std::vector<int> Heapsort(std::vector<int> array);
+std::vector<int> heapsort(std::vector<int> array);
 
-void HeapsortInplace(std::vector<int>& array);
+void heapsortInplace(std::vector<int>& array);

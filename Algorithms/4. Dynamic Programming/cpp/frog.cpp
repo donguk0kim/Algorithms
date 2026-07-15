@@ -7,11 +7,11 @@ Frog::Frog() {
 }
 
 // Top Down
-std::vector<std::vector<int>> Frog::TopDown(int num_steps) {
+std::vector<std::vector<int>> Frog::topDown(int num_steps) {
   if (!cache_[num_steps].empty()) return cache_[num_steps];
 
   for (int add = 1; add <= 3; add++) {
-    std::vector<std::vector<int>> steps = TopDown(num_steps - add);
+    std::vector<std::vector<int>> steps = topDown(num_steps - add);
 
     for (int k = 0; k < steps.size(); k++) {
       std::vector<int> step = steps[k];
@@ -24,7 +24,7 @@ std::vector<std::vector<int>> Frog::TopDown(int num_steps) {
 }
 
 // Bottom Up
-std::vector<std::vector<int>> Frog::BottomUp(int num_steps) {
+std::vector<std::vector<int>> Frog::bottomUp(int num_steps) {
   for (int index = 4; index <= num_steps; index++) {
 
     for (int add = 1; add <= 3; add++) {

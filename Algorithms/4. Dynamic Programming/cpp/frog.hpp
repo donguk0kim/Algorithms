@@ -9,6 +9,6 @@ public:
 
 public:
   Frog();
-  std::vector<std::vector<int>> TopDown(int num_steps);
-  std::vector<std::vector<int>> BottomUp(int num_steps);
+  std::vector<std::vector<int>> topDown(int num_steps);
+  std::vector<std::vector<int>> bottomUp(int num_steps);
 };

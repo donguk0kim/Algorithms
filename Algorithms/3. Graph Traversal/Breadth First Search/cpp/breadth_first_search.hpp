@@ -2,4 +2,4 @@
 
 #include "tree_node.hpp"
 
-inline std::vector<TreeNode*> Bfs(TreeNode* root);
+inline std::vector<TreeNode*> bfs(TreeNode* root);

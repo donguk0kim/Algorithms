@@ -1,38 +1,38 @@
 #include "ring_buffer.hpp"
 
 // debugger
-void Print(int value) {
+void print(int value) {
   std::cout << value << std::endl;
 }
 
-void Sprint(const char* string) {
+void sprint(const char* string) {
   std::cout << string << std::endl;
 }
 
 int main() {
 
   // test case - basic operations
-  Sprint("test case - basic operations");
+  sprint("test case - basic operations");
   RingBuffer array;
-  array.Push(3);
-  array.Unshift(2);
-  array.Unshift(1);
-  array.Push(4);
-  array.Unshift(0);
-  array.Push(5);
-  array.Pop();
-  array.Shift();
-  array.Shift();
-  array.Print();
+  array.push(3);
+  array.unshift(2);
+  array.unshift(1);
+  array.push(4);
+  array.unshift(0);
+  array.push(5);
+  array.pop();
+  array.shift();
+  array.shift();
+  array.print();
 
   // test case - accessors
-  Sprint("test case - accessors");
-  Print(array[0]);
-  Print(array[1]);
-  Print(array[2]);
-  Print(array[3]);
-  Print(array[4]);
-  Print(array[5]);
+  sprint("test case - accessors");
+  print(array[0]);
+  print(array[1]);
+  print(array[2]);
+  print(array[3]);
+  print(array[4]);
+  print(array[5]);
 
   return 0;
 }

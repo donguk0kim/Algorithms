@@ -15,18 +15,18 @@ public:
   ~LinkedList();
 
   // accessors
-  Node* First() const;
-  Node* Last() const;
+  Node* first() const;
+  Node* last() const;
 
   // basic operations
-  void Push(int key, int val);
-  void Remove(int key);
-  bool IsEmpty() const;
-  bool Includes(int key) const;
-  Node* Find(int key) const;
+  void push(int key, int val);
+  void remove(int key);
+  bool isEmpty() const;
+  bool includes(int key) const;
+  Node* find(int key) const;
 
   // debugger
-  void Print() const;
+  void print() const;
 
 private:
   // internal member functions
