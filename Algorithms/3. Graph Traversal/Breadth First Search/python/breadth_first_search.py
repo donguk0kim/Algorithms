@@ -11,7 +11,7 @@ def breadth_first_search(root: TreeNode, value: int) -> TreeNode:
     while queue:
         node = queue.popleft()
         if node.value == value: return node
-        if node.left != None: queue.append(node.left)
-        if node.rite != None: queue.append(node.rite)
+        if node.left: queue.append(node.left)
+        if node.rite: queue.append(node.rite)
 
     return None
