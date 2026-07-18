@@ -1,5 +1,7 @@
 # Study Notes
 
+Fundamentals of computer science data structures and algorithms
+
 ## Data Structures
 
 - [ ] Linear Collections
@@ -18,7 +20,7 @@
   - [ ] LRU Cache
 
 - [ ] Trees
-  - [ ] Binary Tree
+  - [ ] Binary
   - [ ] Binary Search Tree
   - [ ] AVL Tree
   - [ ] Prefix Tree
