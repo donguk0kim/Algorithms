@@ -1,6 +1,7 @@
 {
     "files.exclude": {
         "**/build": true,
+        "**/__pycache__": true,
     },
     "python.analysis.extraPaths": [
         "Data Structures/3. Trees/Binary Search Tree/python",
