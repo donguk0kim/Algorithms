@@ -1,4 +1,4 @@
-require_relative 'heap'
+require_relative '../../../../Data Structures/3. Trees/Binary Heap/heap'
 
 class Array
   def heapsort
